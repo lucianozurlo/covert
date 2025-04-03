@@ -1,12 +1,61 @@
-.work-sans> {
-    font-family: "Work Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+/* FONTS */
+.work-sans > {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
-
 
 .inter {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
+
+/* BODY */
+body {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+main#covert-main {
+  padding-top: 0;
+}
+
+/* HEADER */
+#covert-header {
+  height: 80px;
+}
+
+#covert-header::after {
+  display: none;
+}
+
+.covert-header-inner {
+  height: 100%;
+  padding: 0;
+}
+
+.covert-logo img {
+  width: 113px;
+  height: 30px;
+}
+
+.covert-header-rp a.covert-button {
+  width: 214px;
+  height: 40px;
+  border: none;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 87%;
+  text-align: center;
+  color: #fff;
+}
+
+/* HERO */
