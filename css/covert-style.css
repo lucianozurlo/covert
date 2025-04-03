@@ -48,6 +48,13 @@ main#covert-main {
 .covert-header-rp a.covert-button {
   width: 214px;
   height: 40px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 10px;
   border: none;
   font-family: "Work Sans";
   font-style: normal;
@@ -57,5 +64,12 @@ main#covert-main {
   text-align: center;
   color: #fff;
 }
+.covert-header-rp img {
+  width: 18px;
+  height: 18px;
+}
+/* BUTTON */
+
+/* Auto layout */
 
 /* HERO */
