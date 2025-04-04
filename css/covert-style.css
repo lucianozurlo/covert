@@ -115,7 +115,7 @@ a:hover.book {
   font-size: 24px;
   line-height: 120%;
   color: #007aff;
-  background-image: url("../img/dashed-hero.svg");
+  background-image: url("../img/dashed-hero.png");
 }
 #hero .text h1 {
   width: 810px;
