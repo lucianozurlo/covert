@@ -56,7 +56,10 @@ section > div {
   text-align: center;
 }
 
-.covert-page-title {
+h1,
+h2,
+h3,
+h4 {
   letter-spacing: unset;
 }
 
@@ -238,8 +241,9 @@ p.lead {
   padding: 0px;
   gap: 26px;
   width: 627px;
-  height: 156px;
+  margin-bottom: 114px;
 }
+
 #problem .text .dashed {
   width: 144px;
   height: 44px;
@@ -248,6 +252,7 @@ p.lead {
   background-image: url("../img/dashed-problem.png");
   background-size: cover;
 }
+
 #problem .text h2 {
   width: 627px;
   font-family: "Inter";
@@ -257,5 +262,102 @@ p.lead {
   line-height: 120%;
   text-align: center;
   color: #000000;
-  height: 156px;
+}
+
+#problem .content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 22px;
+  width: 1127px;
+}
+
+#problem .content .step {
+  width: 283px;
+  height: 300px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+#problem .content .step h3 {
+  position: absolute;
+  z-index: 1111;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 100px;
+  line-height: 120%;
+  color: #007aff;
+  text-shadow:
+    25px 0px 10px rgba(0, 0, 0, 0.01),
+    14px 0px 9px rgba(0, 0, 0, 0.05),
+    6px 0px 6px rgba(0, 0, 0, 0.09),
+    2px 0px 3px rgba(0, 0, 0, 0.1);
+
+  -webkit-text-stroke: 1px #fff;
+  margin-bottom: 0;
+  transform: translate(7px, -61px);
+}
+
+#problem .content .step .top {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 32px 0;
+  width: 283px;
+  height: 120px;
+  background: #007aff;
+  box-shadow:
+    0px 30px 12px rgba(0, 0, 0, 0.01),
+    0px 17px 10px rgba(0, 0, 0, 0.05),
+    0px 7px 7px rgba(0, 0, 0, 0.09),
+    0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transform: translateY(5px);
+}
+
+#problem .content .step .top h4 {
+  width: 233px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 120%;
+  text-align: center;
+  color: #ffffff;
+}
+
+#problem .content .step .bottom {
+  width: 283px;
+  height: 180px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 26px 0;
+  background: #ffffff;
+  box-shadow:
+    0px 30px 12px rgba(0, 0, 0, 0.01),
+    0px 17px 10px rgba(0, 0, 0, 0.05),
+    0px 7px 7px rgba(0, 0, 0, 0.09),
+    0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0px 0px 10px 10px;
+}
+
+#problem .content .step .bottom p {
+  width: 232px;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 0;
 }
