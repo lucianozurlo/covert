@@ -68,10 +68,33 @@
                             <img class="main" src="img/hero.svg" alt="">
                             <p class="lead">Trusted by 50+ RevOps leaders at $2-30M ARR SaaS startups</p>
 
-                            <div class="logos-reel">
-                                <div></div>
-                                <div></div>
+                            <div class="carousel-container">
+                                <div class="carousel" id="carousel1">
+                                    <img src="img/logos-reel1/sigma.png" alt="sigma">
+                                    <img src="img/logos-reel1/uppercut.png" alt="uppercut">
+                                    <img src="img/logos-reel1/takeshape.png" alt="takeshape">
+                                    <img src="img/logos-reel1/safeesteem.png" alt="safeesteem">
+                                    <img src="img/logos-reel1/imio.png" alt="imio">
+                                    <img src="img/logos-reel1/viewst.png" alt="viewst">
+                                    <img src="img/logos-reel1/urbiquest.png" alt="urbiquest">
+                                    <img src="img/logos-reel1/proquickdraw.png" alt="proquickdraw">
+                                </div>
                             </div>
+
+                            <div class="carousel-container">
+                                <div class="carousel reverse" id="carousel2">
+                                    <img src="img/logos-reel2/lytho.png" alt="lytho">
+                                    <img src="img/logos-reel2/membrane.png" alt="membrane">
+                                    <img src="img/logos-reel2/ecomap.png" alt="ecomap">
+                                    <img src="img/logos-reel2/parker.png" alt="parker">
+                                    <img src="img/logos-reel2/linenmaster.png" alt="linenmaster">
+                                    <img src="img/logos-reel2/bend.png" alt="bend">
+                                    <img src="img/logos-reel2/airdeck.png" alt="airdeck">
+                                    <img src="img/logos-reel2/massdriver.png" alt="massdriver">
+                                </div>
+                            </div>
+
+
                         </div>
 
                     </div>
@@ -102,6 +125,39 @@
     <script src="js/st-core.js"></script>
     <script src="js/classes.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        function initCarousel(carouselId, speed) {
+            const carousel = document.getElementById(carouselId);
+            // Duplicamos el contenido para lograr el efecto infinito.
+            carousel.innerHTML += carousel.innerHTML;
+
+            // Esperamos un breve momento para que se recalculen los anchos
+            setTimeout(() => {
+                const images = carousel.querySelectorAll('img');
+                const originalCount = images.length / 2;
+                let totalWidth = 0;
+                for (let i = 0; i < originalCount; i++) {
+                    const imgWidth = images[i].offsetWidth;
+                    const style = window.getComputedStyle(images[i]);
+                    const marginRight = parseFloat(style.marginRight);
+                    totalWidth += imgWidth + marginRight;
+                }
+                // Se establece la variable CSS para la distancia a recorrer
+                carousel.style.setProperty('--scroll-distance', totalWidth + 'px');
+
+                // La duración de la animación se calcula según la velocidad (0.025 seg por píxel para el doble de velocidad)
+                const duration = totalWidth * speed;
+                carousel.style.setProperty('--duration', duration + 's');
+            }, 300);
+        }
+
+        window.addEventListener('load', function () {
+            // Iniciamos ambos carousels con la misma velocidad
+            initCarousel('carousel1', 0.025);
+            initCarousel('carousel2', 0.025);
+        });
+    </script>
 </body>
 
 </html>
