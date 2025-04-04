@@ -15,6 +15,7 @@
 img {
   border-radius: 0;
 }
+
 /* BODY */
 body {
   font-family: "Work Sans", sans-serif;
@@ -29,7 +30,41 @@ body {
 main#covert-main {
   padding-top: 0;
 }
+section > div {
+  display: flex;
+  justify-content: center;
+}
+.text .dashed {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  color: #007aff;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.stg-row > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
+.covert-page-title {
+  letter-spacing: unset;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* HEADER */
 #covert-header {
   height: 80px;
@@ -48,7 +83,11 @@ main#covert-main {
   width: 113px;
   height: 30px;
 }
-
+.text h1 span,
+.text h2 span,
+.text h3 span {
+  color: #007aff;
+}
 a.book {
   width: 214px;
   height: 40px;
@@ -82,24 +121,13 @@ a:hover.book {
 /* HERO */
 #hero {
   top: 33px;
-  padding-top: 121px;
+  padding-top: 120px;
   background-image: url(../img/pattern.png);
   background-repeat: no-repeat;
   background-position: top center;
 }
 
-#hero .stg-row > div {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
 #hero .text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 0px;
   gap: 22px;
   width: 810px;
@@ -107,22 +135,13 @@ a:hover.book {
 }
 
 #hero .text .dashed {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
   width: 336px;
   height: 49px;
-  font-family: "Work Sans";
-  font-style: normal;
-  font-weight: 400;
+  min-height: 49px;
   font-size: 24px;
-  line-height: 120%;
-  color: #007aff;
   background-image: url("../img/dashed-hero.png");
 }
+
 #hero .text h1 {
   width: 810px;
   height: 192px;
@@ -139,7 +158,6 @@ a:hover.book {
 
 #hero .text h1 span {
   font-style: italic;
-  color: #007aff;
 }
 
 #hero .text p {
@@ -176,15 +194,23 @@ p.lead {
 }
 .carousel {
   display: flex;
+  -webkit-animation: scroll var(--duration, 10s) linear infinite;
   animation: scroll var(--duration, 10s) linear infinite;
 }
-/* Para el segundo carousel, invertimos la dirección */
 .carousel.reverse {
   animation-direction: reverse;
 }
 .carousel img {
   height: 80px;
   margin-right: 100px;
+}
+@-webkit-keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-1 * var(--scroll-distance)));
+  }
 }
 @keyframes scroll {
   from {
@@ -193,4 +219,43 @@ p.lead {
   to {
     transform: translateX(calc(-1 * var(--scroll-distance)));
   }
+}
+
+/* PROBLEM */
+#problem .stg-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 32px;
+  width: 1127px;
+}
+
+#problem .text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 26px;
+  width: 627px;
+  height: 156px;
+}
+#problem .text .dashed {
+  width: 144px;
+  height: 44px;
+  min-height: 44px;
+  font-size: 20px;
+  background-image: url("../img/dashed-problem.png");
+  background-size: cover;
+}
+#problem .text h2 {
+  width: 627px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 120%;
+  text-align: center;
+  color: #000000;
+  height: 156px;
 }

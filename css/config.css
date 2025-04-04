@@ -254,7 +254,7 @@
   --covert-socials-gap: 32px;
 
   /* Section Spacing (Applies at the top and the bottom of each section) */
-  --covert-section-gap: 128px;
+  --covert-section-gap: 64px;
 
   /* Extra Large border radius */
   --covert-xl-br: 48px;
