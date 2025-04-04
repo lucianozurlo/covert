@@ -45,7 +45,7 @@ main#covert-main {
   height: 30px;
 }
 
-.covert-header-rp a.covert-button {
+a.book {
   width: 214px;
   height: 40px;
   border-radius: 5px;
@@ -64,12 +64,13 @@ main#covert-main {
   text-align: center;
   color: #fff;
 }
-.covert-header-rp img {
+a.book img {
   width: 18px;
   height: 18px;
 }
-/* BUTTON */
-
-/* Auto layout */
 
 /* HERO */
+#hero {
+  top: 33px;
+  background-image: url("../img/pattern.png");
+}
