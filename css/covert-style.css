@@ -173,28 +173,23 @@ p.lead {
 .carousel-container {
   width: 100%;
   overflow: hidden;
-  margin-top: 20px;
 }
-
 .carousel {
   display: flex;
   animation: scroll var(--duration, 10s) linear infinite;
 }
-
+/* Para el segundo carousel, invertimos la dirección */
 .carousel.reverse {
   animation-direction: reverse;
 }
-
 .carousel img {
   height: 80px;
   margin-right: 100px;
 }
-
 @keyframes scroll {
   from {
     transform: translateX(0);
   }
-
   to {
     transform: translateX(calc(-1 * var(--scroll-distance)));
   }
