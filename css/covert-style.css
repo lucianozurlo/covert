@@ -430,6 +430,10 @@ p.lead {
   margin-bottom: 70px;
 }
 
+#solution-details .stg-row > div {
+  align-items: flex-start;
+}
+
 #solution-details .stg-row:last-child {
   margin-bottom: 0;
 }
