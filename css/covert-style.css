@@ -1143,3 +1143,54 @@ p.lead {
   text-align: left;
   margin-bottom: 0;
 }
+
+#solution-footer {
+  padding-top: 100px;
+}
+
+#solution-footer .stg-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 32px;
+  width: 1127px;
+}
+
+#solution-footer .text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 26px;
+  width: 627px;
+  margin-bottom: 114px;
+}
+
+#solution-footer .text .dashed {
+  width: 144px;
+  font-size: 20px;
+  background-image: url("../img/dashed-solution-color.png");
+  background-size: cover;
+}
+
+#solution-footer .text h2 {
+  width: 627px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 120%;
+  text-align: center;
+  color: #000;
+}
+
+#solution-footer .content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  gap: 140px;
+  width: 1127px;
+}
