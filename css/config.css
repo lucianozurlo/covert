@@ -1,12 +1,18 @@
-/**
- * Author: Shadow Themes
- * Author URL: https://shadow-themes.com
- */
-
-/* ============
-   COLOR SCHEME
-=============== */
 :root {
+  /* Fonts */
+  --font-primary: "Work Sans", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+
+  /* Colors */
+  --color-primary: #007aff;
+  --color-secondary: #002b5b;
+  --color-white: #fff;
+  --color-black: #000;
+
+  /* Fonts */
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+
   /* Used as body background and overlays */
   --covert-s-body-bg: #f5f7fa;
 
