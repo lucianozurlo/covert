@@ -232,4 +232,29 @@
     font-size: 16px;
     width: 310px;
   }
+  #pricing-details .content {
+    width: 936px;
+  }
+  #pricing-details .content .step .top,
+  #pricing-details .content .step .bottom,
+  #pricing-details .content .step:nth-child(2) .top,
+  #pricing-details .content .step:nth-child(2) .bottom {
+    width: 300px;
+  }
+  #pricing-details .content .step .bottom .button-book img.dashed-buttom {
+    width: 216px;
+    height: 56px;
+  }
+  #pricing-details .text .dashed {
+    width: 216px;
+    height: 56px;
+    min-height: 56px;
+    font-size: 16px;
+    background-image: url(../img/dashed-pricing-mob.png);
+  }
+  #pricing-details .content .step .bottom .button-book a {
+    width: 200px;
+    padding: 10px 12px;
+    gap: 8px;
+  }
 }
