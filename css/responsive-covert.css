@@ -85,7 +85,7 @@
     height: 39px;
     min-height: 39px;
     font-size: 16px;
-    background-image: url(../img/dashed-problem-mob.png);
+    background-image: url("../img/dashed-problem-mob.png");
   }
   #problem .content {
     flex-direction: column;
@@ -138,7 +138,7 @@
     height: 39px;
     min-height: 39px;
     font-size: 16px;
-    background-image: url(../img/dashed-solution-mob.png);
+    background-image: url("../img/dashed-solution-mob.png");
   }
   #solution .text h2 {
     font-size: 32px;
@@ -223,7 +223,7 @@
     height: 39px;
     min-height: 39px;
     font-size: 16px;
-    background-image: url(../img/dashed-pricing-mob.png);
+    background-image: url("../img/dashed-pricing-mob.png");
   }
   #pricing .text h2 {
     font-size: 32px;
@@ -235,6 +235,7 @@
   }
   #pricing-details {
     margin-top: -63px;
+    padding-bottom: 0;
   }
   #pricing-details .content {
     width: 936px;
@@ -250,11 +251,16 @@
   #pricing-details .content .swiper-slide:nth-child(2) .step .bottom {
     width: 300px;
   }
+
+  #pricing-details .content .swiper-slide:nth-child(2) .step .bottom {
+    height: 535px;
+  }
   #pricing-details .content .swiper-slide:nth-child(2) .bottom {
     height: 500px;
   }
 
   #pricing-details .content .step .bottom {
+    height: 480px;
     padding: 30px 24px 38px;
   }
   #pricing-details .content .step .bottom .button-book img.dashed-buttom {
@@ -266,7 +272,7 @@
     height: 56px;
     min-height: 56px;
     font-size: 16px;
-    background-image: url(../img/dashed-pricing-mob.png);
+    background-image: url("../img/dashed-pricing-mob.png");
   }
   #pricing-details .content .step .bottom .button-book a {
     width: 200px;
@@ -274,10 +280,10 @@
     gap: 8px;
   }
   #pricing-details .content .step .bottom ul {
-    gap: 2px;
+    /* gap: 2px; */
   }
   #pricing-details .content .step .bottom ul li p {
-    font-size: 14px;
+    /* font-size: 14px; */
     line-height: 130%;
   }
 
@@ -306,4 +312,73 @@
     align-items: center;
   }
   /* */
+  #solution-plus .text {
+    width: 337px;
+    margin-bottom: 42px;
+  }
+
+  #solution-plus .text .dashed {
+    width: 119px;
+    height: 39px;
+    min-height: 39px;
+    font-size: 16px;
+    background-image: url("../img/dashed-solution-color-mob.png");
+  }
+  #solution-plus .text h2 {
+    width: 100%;
+    font-size: 32px;
+  }
+  #solution-plus .content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  #solution-plus .content .step > h3 {
+    display: none;
+  }
+  #solution-plus .content .step .top {
+    border-radius: 10px;
+    height: 100px;
+    width: 320px;
+  }
+  #solution-plus .content .step .bottom {
+    height: 145px;
+    width: 320px;
+  }
+  #solution-plus .content.plus {
+    margin-top: 65px;
+    gap: 50px;
+  }
+  #solution-plus .content.plus .step,
+  #solution-plus .content.plus .step .top,
+  #solution-plus .content.plus .step .bottom {
+    width: 320px;
+  }
+  #solution-plus .content.plus .step:last-child .shadow {
+    width: 344px;
+    border-radius: 16px;
+  }
+  #solution-plus .content .step .bottom h3 {
+    margin-bottom: 20px;
+  }
+  #testimonials {
+    padding-top: 50px;
+  }
+  #testimonials .text {
+    width: 337px;
+    margin-bottom: 42px;
+  }
+  #testimonials .text .dashed {
+    width: 118px;
+    height: 39px;
+    min-height: 39px;
+    font-size: 16px;
+    background-image: url("../img/dashed-testimonials-mob.png");
+  }
+  #testimonials .text h2 {
+    width: 100%;
+    font-size: 32px;
+  }
+  #testimonials .stg-row > div {
+    margin: 0 !important;
+  }
 }

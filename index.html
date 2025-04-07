@@ -1186,7 +1186,7 @@
         function initSwiper() {
             // Si el ancho es menor o igual a 936px, se activa el slider
             if (window.innerWidth <= 936) {
-                swiper = new Swiper('.swiper-container', {
+                swiper = new Swiper('#pricing-details .swiper-container', {
                     slidesPerView: 3,        // Mostrar 3 slides a la vez
                     centeredSlides: true,    // Centrar el slide activo
                     spaceBetween: 0,         // Sin espacio entre slides
@@ -1196,7 +1196,7 @@
             } else {
                 // Si el ancho es mayor a 936px, desactivamos el slider y mostramos los slides al lado
                 if (swiper) swiper.destroy(true, true);  // Destruir la instancia de Swiper
-                const swiperContainer = document.querySelector('.swiper-container');
+                const swiperContainer = document.querySelector('#pricing-details .swiper-container');
                 swiperContainer.style.display = 'flex'; // Asegurar que esté en flex
                 const slides = document.querySelectorAll('.swiper-slide');
                 slides.forEach(slide => {
