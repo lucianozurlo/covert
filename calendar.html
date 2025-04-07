@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar with Cal.com Modal (Centered, Fixed Size & Outside Close Button)</title>
+    <style>
+        /* Contenedor principal */
+        #calendar {
+            width: 340px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Encabezado: mes a la izquierda, botones a la derecha */
+        #calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #calendar-header h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        /* Contenedor para los botones de navegación */
+        #navButtons {
+            display: flex;
+            gap: 5px;
+        }
+
+        /* Botones de navegación (imágenes) */
+        #navButtons button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        #navButtons button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Tabla del calendario */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        thead th {
+            background-color: #f0f0f0;
+            padding: 8px 0;
+            font-weight: normal;
+        }
+
+        tbody td {
+            width: 46px;
+            height: 46px;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+        }
+
+        /* Enlaces de cada día */
+        td a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            line-height: 46px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* Días de otros meses en gris */
+        td.other-month {
+            background-color: #f7f7f7;
+            color: #999;
+        }
+
+        /* Día actual resaltado */
+        td.today a {
+            background-color: #2962FF;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        /* Días pasados (deshabilitados) */
+        td a.disabled {
+            pointer-events: none;
+            color: #bbb;
+        }
+
+        /* Modal: se centra en pantalla con efecto fade */
+        #modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Contenedor que envuelve el contenido y el botón de cierre */
+        #modal-wrapper {
+            position: relative;
+        }
+
+        /* Contenedor del contenido del modal con tamaño fijo y clip-path */
+        #modal-content {
+            background-color: #fff;
+            width: 994px;
+            height: 700px;
+            clip-path: inset(0 0 70px 0);
+            border: 1px solid #888;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Botón de cierre, ahora fuera del contenedor clippeado */
+        #modal-close {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #modal-close:hover,
+        #modal-close:focus {
+            color: black;
+        }
+
+        /* El iframe ocupa el espacio restante del modal */
+        #modal-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#" class="covert-button book" data-modal-url="https://cal.com/covert-revenue/30min">
+        Book a strategy call</a>
+    <div id="calendar">
+        <div id="calendar-header">
+            <!-- Mes mostrado a la izquierda -->
+            <h2 id="monthYear"></h2>
+            <!-- Botones de navegación a la derecha -->
+            <div id="navButtons">
+                <button id="prevBtn">
+                    <img src="img/month-prev.png" alt="Previous Month" width="46" height="46">
+                </button>
+                <button id="nextBtn">
+                    <img src="img/month-next.png" alt="Next Month" width="46" height="46">
+                </button>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <!-- Días de la semana en inglés -->
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                    <th>Su</th>
+                </tr>
+            </thead>
+            <tbody id="calendar-body">
+                <!-- Se generan dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <div id="modal-wrapper">
+            <div id="modal-content">
+                <iframe id="modal-iframe" src=""></iframe>
+            </div>
+            <span id="modal-close">&times;</span>
+        </div>
+    </div>
+
+    <script>
+        // Helper para formatear números a dos dígitos
+        function pad(num) {
+            return (num < 10 ? "0" : "") + num;
+        }
+
+        // Fecha actual del sistema
+        const today = new Date();
+        const currentDay = today.getDate();
+        const currentMonth = today.getMonth();  // 0 = Jan, ..., 11 = Dec
+        const currentYear = today.getFullYear();
+
+        // Variables para el mes y año mostrados
+        let displayedMonth = currentMonth;
+        let displayedYear = currentYear;
+
+        // Referencias al DOM
+        const monthYearEl = document.getElementById('monthYear');
+        const calendarBody = document.getElementById('calendar-body');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modal-close');
+        const modalIframe = document.getElementById('modal-iframe');
+
+        // Nombres de los meses en inglés
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        /**
+         * Muestra el calendario para un mes y año dados.
+         * Cada día genera una URL para Cal.com en el formato:
+         * https://cal.com/covert-revenue/30min?date=YYYY-MM-DD
+         * Se resalta el día actual y se deshabilitan los días pasados del mes vigente.
+         * Al hacer clic en un día (si está habilitado), se abre el modal.
+         * Los enlaces se generan con href="#" y con la clase "covert-button book" 
+         * y un atributo data-modal-url que contiene la URL real.
+         */
+        function showCalendar(month, year) {
+            calendarBody.innerHTML = '';
+            monthYearEl.textContent = `${monthNames[month]} ${year}`;
+
+            const prevDaysInMonth = new Date(year, month, 0).getDate();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            // Ajustamos para que lunes sea el índice 0 (si getDay() es 0 => domingo, lo convertimos a 6)
+            const startIndex = (firstDayOfMonth === 0) ? 6 : firstDayOfMonth - 1;
+
+            let dayCounter = 1;
+            let nextDayCounter = 1;
+
+            for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
+                const row = document.createElement('tr');
+
+                for (let colIndex = 0; colIndex < 7; colIndex++) {
+                    const cell = document.createElement('td');
+                    const cellPos = rowIndex * 7 + colIndex;
+                    const link = document.createElement('a');
+
+                    // Se calculará la URL real y luego se asigna al atributo data-modal-url.
+                    let url = "";
+                    // 1) Días del mes anterior
+                    if (cellPos < startIndex) {
+                        const prevDay = prevDaysInMonth - (startIndex - cellPos - 1);
+                        let prevMonth, prevYear;
+                        if (month === 0) {
+                            prevMonth = 11;
+                            prevYear = year - 1;
+                        } else {
+                            prevMonth = month - 1;
+                            prevYear = year;
+                        }
+                        url = "https://cal.com/covert-revenue/30min?date=" +
+                            prevYear + "-" + pad(prevMonth + 1) + "-" + pad(prevDay);
+                        link.textContent = prevDay;
+                        cell.classList.add('other-month');
+
+                        // 2) Días del mes actual
+                    } else if (dayCounter <= daysInMonth) {
+                        url = "https://cal.com/covert-revenue/30min?date=" +
+                            year + "-" + pad(month + 1) + "-" + pad(dayCounter);
+                        link.textContent = dayCounter;
+                        if (year === currentYear && month === currentMonth && dayCounter === currentDay) {
+                            cell.classList.add('today');
+                        }
+                        if (year === currentYear && month === currentMonth && dayCounter < currentDay) {
+                            link.classList.add('disabled');
+                        }
+                        dayCounter++;
+
+                        // 3) Días del mes siguiente
+                    } else {
+                        let nextMonth, nextYear;
+                        if (month === 11) {
+                            nextMonth = 0;
+                            nextYear = year + 1;
+                        } else {
+                            nextMonth = month + 1;
+                            nextYear = year;
+                        }
+                        url = "https://cal.com/covert-revenue/30min?date=" +
+                            nextYear + "-" + pad(nextMonth + 1) + "-" + pad(nextDayCounter);
+                        link.textContent = nextDayCounter;
+                        cell.classList.add('other-month');
+                        nextDayCounter++;
+                    }
+
+                    // Configuramos el enlace con href="#" y agregamos la clase y atributo data-modal-url.
+                    link.href = "#";
+                    link.classList.add("covert-button", "book");
+                    link.setAttribute("data-modal-url", url);
+
+                    // Listener para abrir el modal al hacer clic en el día (si no está deshabilitado)
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        if (!link.classList.contains('disabled')) {
+                            openModal(link.getAttribute("data-modal-url"));
+                        }
+                    });
+
+                    cell.appendChild(link);
+                    row.appendChild(cell);
+                }
+                calendarBody.appendChild(row);
+                if (dayCounter > daysInMonth && rowIndex > 3) {
+                    break;
+                }
+            }
+            // Deshabilitar el botón "Anterior" si se muestra el mes actual
+            prevBtn.disabled = (year === currentYear && month === currentMonth);
+        }
+
+        // Función para abrir el modal (con efecto fade)
+        function openModal(url) {
+            modalIframe.src = url;
+            modal.classList.add("open");
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            modal.classList.remove("open");
+            setTimeout(() => {
+                modalIframe.src = "";
+            }, 300);
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        window.addEventListener('click', function (e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Listeners para los botones de navegación del calendario
+        prevBtn.addEventListener('click', () => {
+            if (!(displayedYear === currentYear && displayedMonth === currentMonth)) {
+                displayedMonth--;
+                if (displayedMonth < 0) {
+                    displayedMonth = 11;
+                    displayedYear--;
+                }
+                showCalendar(displayedMonth, displayedYear);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            displayedMonth++;
+            if (displayedMonth > 11) {
+                displayedMonth = 0;
+                displayedYear++;
+            }
+            showCalendar(displayedMonth, displayedYear);
+        });
+
+        // Mostrar el mes actual al cargar la página
+        showCalendar(displayedMonth, displayedYear);
+
+        // Listener para otros links con clase covert-button book (si existen fuera del calendario)
+        document.querySelectorAll('a.covert-button.book').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const url = link.getAttribute('data-modal-url');
+                openModal(url);
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>
