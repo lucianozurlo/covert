@@ -27,10 +27,12 @@
   .covert-mobile-header-inner {
     height: 80px;
   }
+
   #hero {
     top: 80px;
     padding-top: 0;
   }
+
   #hero .text {
     width: 348px;
   }
@@ -42,16 +44,19 @@
     font-size: 16px;
     background-image: url("../img/dashed-hero-mob.png");
   }
+
   #hero .text h1 {
     width: 100%;
     height: unset;
     font-size: 40px;
   }
+
   #hero .text p {
     width: 100%;
     font-size: 16px;
     margin-bottom: 10px;
   }
+
   #hero img.main {
     width: 228px;
     height: auto;
@@ -69,17 +74,21 @@
   .carousel-container {
     margin-top: 0;
   }
+
   #problem {
     padding-top: 100px;
     padding-bottom: 100px;
   }
+
   #problem .stg-row {
     width: 100%;
   }
+
   #problem .text {
     width: 365px;
     margin-bottom: 30px;
   }
+
   #problem .text h2 {
     width: 100%;
     font-size: 32px;
@@ -92,23 +101,29 @@
     font-size: 16px;
     background-image: url("../img/dashed-problem-mob.png");
   }
+
   #problem .content {
     flex-direction: column;
     gap: 30px;
   }
+
   #problem .content .step h3 {
     display: none;
   }
+
   #problem .content .arrow {
     position: absolute;
     z-index: 11;
   }
+
   #problem .content .arrow:nth-child(2) {
     transform: rotate(60deg) scale(0.6) translate(266px, 403px);
   }
+
   #problem .content .arrow:nth-child(5) {
     transform: rotate(170deg) scale(0.4) translate(-130px, -1270px);
   }
+
   #problem .content .step .top {
     border-radius: 10px;
     transform: translateY(10px);
@@ -116,28 +131,35 @@
     padding: 2px 28px 0;
     height: 100px;
   }
+
   #problem .content .step .top h4,
   #problem .content .step .bottom p {
     width: 100%;
   }
+
   #problem .content .step .bottom {
     width: 320px;
     height: 170px;
     padding: 6px 28px 0;
   }
+
   #problem .content .step:nth-child(3) .bottom {
     padding: 10px 39px 0;
   }
+
   #problem .content .step:last-child .bottom {
     padding: 10px 50px 0;
   }
+
   #solution {
     padding-top: 60px;
   }
+
   #solution .text {
     width: 355px;
     margin-bottom: 5px;
   }
+
   #solution .text .dashed {
     width: 119px;
     height: 39px;
@@ -145,45 +167,56 @@
     font-size: 16px;
     background-image: url("../img/dashed-solution-mob.png");
   }
+
   #solution .text h2 {
     font-size: 32px;
   }
+
   #solution .text p {
     font-size: 16px;
   }
+
   #solution-details {
     width: 100%;
     padding-top: 55px;
   }
+
   #solution-details .stg-row > div {
     display: flex;
     align-items: center;
   }
+
   #solution-details h3 {
     font-size: 24px;
   }
+
   #solution-details p.covert-large-text {
     text-align: center;
     font-size: 16px;
   }
+
   #solution-details ul {
     align-items: center;
     width: 360px !important;
     padding-left: 0;
   }
+
   #solution-details ul li {
     list-style-type: none;
     text-align: center;
   }
+
   #solution-details ul h5,
   #solution-details ul p {
     text-align: center;
     font-size: 16px;
   }
+
   #solution-details .stg-row {
     display: flex;
     margin-bottom: 60px;
   }
+
   #solution-details .stg-row:nth-child(2) div:first-child {
     order: 2;
   }
@@ -191,18 +224,22 @@
   #solution-details .stg-row:nth-child(2) div:last-child {
     order: 1;
   }
+
   #solution-details .stg-row .img {
     width: 100%;
   }
+
   #solution-details .stg-row div .line {
     margin-bottom: 45px;
   }
+
   #solution-details .stg-row:nth-child(1) div .covert-parallax-media img {
     width: 120%;
     min-width: 120%;
     height: auto;
     margin: 30px -10%;
   }
+
   #solution-details .stg-row:nth-child(2) div .covert-parallax-media img {
     width: 150%;
     min-width: 150%;
@@ -216,13 +253,16 @@
     height: auto;
     margin: 30px -30%;
   }
+
   #pricing {
     padding-top: 50px;
   }
+
   #pricing .text {
     width: 355px;
     margin-bottom: 94px;
   }
+
   #pricing .text .dashed {
     width: 86px;
     height: 39px;
@@ -230,26 +270,31 @@
     font-size: 16px;
     background-image: url("../img/dashed-pricing-mob.png");
   }
+
   #pricing .text h2 {
     font-size: 32px;
     width: 340px;
   }
+
   #pricing .text p {
     font-size: 16px;
     width: 310px;
   }
+
   #pricing-details {
     margin-top: -63px;
     padding-bottom: 0;
   }
+
   #pricing-details .content {
-    width: 936px;
+    width: 954px;
   }
   .swiper-backface-hidden .swiper-slide,
   #pricing-details .content .step {
     width: 318px !important;
     padding: 0;
   }
+
   #pricing-details .content .step .top,
   #pricing-details .content .step .bottom,
   #pricing-details .content .swiper-slide:nth-child(2) .step .top,
@@ -260,6 +305,7 @@
   #pricing-details .content .swiper-slide:nth-child(2) .step .bottom {
     height: 535px;
   }
+
   #pricing-details .content .swiper-slide:nth-child(2) .bottom {
     height: 500px;
   }
@@ -268,10 +314,12 @@
     height: 480px;
     padding: 30px 24px 38px;
   }
+
   #pricing-details .content .step .bottom .button-book img.dashed-buttom {
     width: 216px;
     height: 56px;
   }
+
   #pricing-details .text .dashed {
     width: 216px;
     height: 56px;
@@ -279,14 +327,17 @@
     font-size: 16px;
     background-image: url("../img/dashed-pricing-mob.png");
   }
+
   #pricing-details .content .step .bottom .button-book a {
     width: 200px;
     padding: 10px 12px;
     gap: 8px;
   }
+
   #pricing-details .content .step .bottom ul {
     /* gap: 2px; */
   }
+
   #pricing-details .content .step .bottom ul li p {
     /* font-size: 14px; */
     line-height: 130%;
@@ -295,28 +346,28 @@
   #pricing-details .content .step .bottom h3 {
     margin-bottom: 24px;
   }
-  /* slider pricing */
-  .swiper-container {
+  /* slider */
+  #pricing-details .swiper-container {
     width: 100%;
     max-width: 100%;
+    display: flex !important;
+    justify-content: center;
+  }
+
+  #pricing-details .swiper-wrapper {
     display: flex;
     justify-content: center;
   }
 
-  .swiper-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  .swiper-slide {
-    width: 318px;
-    height: 50px;
+  #pricing-details .swiper-slide {
+    width: 318px; /* Ajusta el ancho */
+    height: auto;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  /* */
+
   #solution-plus .text {
     width: 337px;
     margin-bottom: 42px;
@@ -329,49 +380,62 @@
     font-size: 16px;
     background-image: url("../img/dashed-solution-color-mob.png");
   }
+
   #solution-plus .text h2 {
     width: 100%;
     font-size: 32px;
   }
+
   #solution-plus .content {
     flex-direction: column;
     gap: 20px;
   }
+
   #solution-plus .content .step > h3 {
     display: none;
   }
+
   #solution-plus .content .step .top {
     border-radius: 10px;
     height: 100px;
     width: 320px;
   }
+
   #solution-plus .content .step .bottom {
     height: 145px;
     width: 320px;
   }
+
   #solution-plus .content.plus {
     margin-top: 65px;
     gap: 50px;
   }
+
   #solution-plus .content.plus .step,
   #solution-plus .content.plus .step .top,
   #solution-plus .content.plus .step .bottom {
     width: 320px;
   }
+
   #solution-plus .content.plus .step:last-child .shadow {
     width: 344px;
     border-radius: 16px;
   }
+
   #solution-plus .content .step .bottom h3 {
     margin-bottom: 20px;
   }
+
   #testimonials {
     padding-top: 50px;
+    padding-bottom: 50px;
   }
+
   #testimonials .text {
     width: 337px;
     margin-bottom: 42px;
   }
+
   #testimonials .text .dashed {
     width: 118px;
     height: 39px;
@@ -379,11 +443,83 @@
     font-size: 16px;
     background-image: url("../img/dashed-testimonials-mob.png");
   }
+
   #testimonials .text h2 {
     width: 100%;
     font-size: 32px;
   }
+
   #testimonials .stg-row > div {
     margin: 0 !important;
+  }
+
+  #testimonials .content {
+    width: 2862px;
+  }
+
+  /* slider */
+  #testimonials .swiper-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex !important;
+    justify-content: center;
+  }
+
+  #testimonials .swiper-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  #testimonials .swiper-slide {
+    width: 318px; /* Ajusta el ancho */
+    height: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+  }
+  .swiper-backface-hidden .swiper-slide,
+  #testimonials .content .swiper-slide div {
+    width: 298px;
+    padding: 28px;
+  }
+
+  #testimonials .content .testimonial {
+    width: 298px;
+  }
+
+  #testimonials .content .testimonial .verbatim,
+  #testimonials .content .testimonial .verbatim p {
+    width: 100%;
+    font-size: 14px;
+    line-height: 130%;
+  }
+
+  #testimonials .testimonial {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  #testimonials .content .testimonial .author {
+    width: unset;
+    justify-content: flex-start;
+  }
+
+  #testimonials .content .testimonial .author .name {
+    width: unset;
+  }
+
+  #testimonials .content .testimonial .author .name h4 {
+    font-size: 18px;
+    letter-spacing: unset !important;
+    line-height: 100%;
+  }
+
+  #testimonials .content .testimonial .author .name p {
+    font-size: 16px;
+    letter-spacing: unset !important;
+    line-height: 100%;
   }
 }

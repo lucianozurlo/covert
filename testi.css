@@ -1,0 +1,17 @@
+@media only screen and (max-width: 768px) {
+  #testi .content {
+    width: 2862px;
+  }
+  .swiper-backface-hidden .swiper-slide,
+  #testi .content .swiper-slide div {
+    width: 318px !important;
+    padding: 0;
+  }
+
+  /* #XXX .content .step .top,
+      #XXX .content .step .bottom,
+      #XXX .content .swiper-slide:nth-child(2) .step .top,
+      #XXX .content .swiper-slide:nth-child(2) .step .bottom {
+        width: 300px;
+      } */
+}
