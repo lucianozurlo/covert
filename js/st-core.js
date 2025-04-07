@@ -1,7 +1,3 @@
-/**
- * Author: Shadow Themes
- * Author URL: https://shadow-themes.com
- */
 "use strict";
 const PREFIX = "covert";
 

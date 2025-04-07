@@ -292,23 +292,23 @@
   /* Input field bottom margin */
   --covert-input-gap: 24px;
 
-  /* Shadow Themes Grid: Container */
+  /* Grid: Container */
   --stg-container-width: 1422px;
 
-  /* Shadow Themes Grid: Default Gap */
+  /* Grid: Default Gap */
   --stg-gap: 32px;
   --stg-d-gap: 32px;
 
-  /* Shadow Themes Grid: Extra Small Gap */
+  /* Grid: Extra Small Gap */
   --stg-xs-gap: 8px;
 
-  /* Shadow Themes Grid: Small Gap */
+  /* Grid: Small Gap */
   --stg-small-gap: 16px;
 
-  /* Shadow Themes Grid: Large Gap */
+  /* Grid: Large Gap */
   --stg-large-gap: 64px;
 
-  /* Shadow Themes Grid: Extra Large Gap */
+  /* Grid: Extra Large Gap */
   --stg-xl-gap: 128px;
 }
 

@@ -1,14 +1,10 @@
-/**
- * Author: Shadow Themes
- * Author URL: https://shadow-themes.com
- */
-'use strict';
+"use strict";
 
 /* --- Class: Before and After --- */
 class Covert_Before_After {
-  constructor ($obj = null) {
+  constructor($obj = null) {
     if ($obj === null) {
-      console.warn ('Before After: Item is not specified');
+      console.warn("Before After: Item is not specified");
       return false;
     }
 
@@ -18,54 +14,54 @@ class Covert_Before_After {
     if ($obj instanceof jQuery) {
       this.$el = $obj;
     } else {
-      this.$el = jQuery ($obj);
+      this.$el = jQuery($obj);
     }
 
     this.$el = {
       $wrap: $obj,
-      $before: jQuery (
+      $before: jQuery(
         '<div class="covert-before-after-img covert-before-img"/>'
-      ).appendTo ($obj),
-      $after: jQuery (
+      ).appendTo($obj),
+      $after: jQuery(
         '<div class="covert-before-after-img covert-after-img-wrap"/>'
-      ).appendTo ($obj),
-      $divider: jQuery (
+      ).appendTo($obj),
+      $divider: jQuery(
         '<div class="covert-before-after-divider">\
                 <svg xmlns="http://www.w3.org/2000/svg" width="23.813" height="13.875" viewBox="0 0 23.813 13.875">\
                     <path d="M-5.062-15.937l1.125,1.125L-9.047-9.75H9.047L3.938-14.812l1.125-1.125,6.375,6.375L11.906-9l-.469.563L5.063-2.062,3.938-3.187,9.047-8.25H-9.047l5.109,5.063L-5.062-2.062l-6.375-6.375L-11.906-9l.469-.562Z" transform="translate(11.906 15.938)" fill="#fff"/>\
                 </svg>\
             </div>'
-      ).appendTo ($obj),
+      ).appendTo($obj),
     };
-    this.$el.$after.append (_self.$el.$wrap.children ('img').clone ());
-    this.offset = this.$el.$wrap.offset ().left;
-    this.size = this.$el.$wrap.width ();
+    this.$el.$after.append(_self.$el.$wrap.children("img").clone());
+    this.offset = this.$el.$wrap.offset().left;
+    this.size = this.$el.$wrap.width();
     this.current = 50;
     this.target = 50;
     this.isDown = false;
     this.isHover = false;
 
-    this.$el.$before.css (
-      'background-image',
-      'url(' + this.$el.$wrap.attr ('data-img-before') + ')'
+    this.$el.$before.css(
+      "background-image",
+      "url(" + this.$el.$wrap.attr("data-img-before") + ")"
     );
-    this.$el.$after.children ('img').wrap ('<div class="covert-after-img"/>');
+    this.$el.$after.children("img").wrap('<div class="covert-after-img"/>');
     this.$el.$after
-      .children ('.covert-after-img')
-      .css (
-        'background-image',
-        'url(' + this.$el.$wrap.attr ('data-img-after') + ')'
+      .children(".covert-after-img")
+      .css(
+        "background-image",
+        "url(" + this.$el.$wrap.attr("data-img-after") + ")"
       );
 
     // Mouse Events
     this.$el.$wrap
-      .on ('mousedown', function (e) {
-        e.preventDefault ();
+      .on("mousedown", function (e) {
+        e.preventDefault();
         _self.isDown = true;
-        _self.$el.$wrap.addClass ('is-grabbed');
+        _self.$el.$wrap.addClass("is-grabbed");
       })
-      .on ('mousemove', function (e) {
-        e.preventDefault ();
+      .on("mousemove", function (e) {
+        e.preventDefault();
         if (_self.isDown) {
           let position = e.pageX - _self.offset,
             newTarget = position / _self.size;
@@ -78,31 +74,31 @@ class Covert_Before_After {
           _self.target = newTarget * 100;
         }
       })
-      .on ('mouseleave', function (e) {
-        e.preventDefault ();
+      .on("mouseleave", function (e) {
+        e.preventDefault();
         _self.isDown = false;
-        _self.$el.$wrap.removeClass ('is-grabbed');
+        _self.$el.$wrap.removeClass("is-grabbed");
       })
-      .on ('mouseup', function (e) {
-        e.preventDefault ();
+      .on("mouseup", function (e) {
+        e.preventDefault();
         _self.isDown = false;
-        _self.$el.$wrap.removeClass ('is-grabbed');
+        _self.$el.$wrap.removeClass("is-grabbed");
       });
 
     // Touch Events
-    this.$el.$wrap[0].addEventListener (
-      'touchstart',
+    this.$el.$wrap[0].addEventListener(
+      "touchstart",
       function (e) {
         _self.isDown = true;
       },
       false
     );
-    this.$el.$wrap[0].addEventListener (
-      'touchmove',
+    this.$el.$wrap[0].addEventListener(
+      "touchmove",
       function (e) {
-        let axis = baw_axis.getAxis ();
-        if ('x' === axis) {
-          e.preventDefault ();
+        let axis = baw_axis.getAxis();
+        if ("x" === axis) {
+          e.preventDefault();
           if (_self.isDown) {
             let position = e.touches[0].clientX - _self.offset,
               newTarget = position / _self.size;
@@ -118,8 +114,8 @@ class Covert_Before_After {
       },
       false
     );
-    this.$el.$wrap[0].addEventListener (
-      'touchend',
+    this.$el.$wrap[0].addEventListener(
+      "touchend",
       function (e) {
         _self.isDown = false;
       },
@@ -127,43 +123,43 @@ class Covert_Before_After {
     );
 
     // Window Events
-    jQuery (window)
-      .on ('resize', function () {
-        _self.layout ();
-        _self.reset ();
+    jQuery(window)
+      .on("resize", function () {
+        _self.layout();
+        _self.reset();
       })
-      .on ('load', function () {
-        _self.layout ();
+      .on("load", function () {
+        _self.layout();
       });
 
     // Layout
-    this.layout ();
+    this.layout();
 
     // Ready
     this.isReady = true;
   }
-  layout () {
-    this.offset = this.$el.$wrap.offset ().left;
-    this.size = this.$el.$wrap.width ();
+  layout() {
+    this.offset = this.$el.$wrap.offset().left;
+    this.size = this.$el.$wrap.width();
     this.$el.$after
-      .children ('.covert-after-img')
-      .width (this.$el.$wrap.width ())
-      .height (this.$el.$wrap.height ());
+      .children(".covert-after-img")
+      .width(this.$el.$wrap.width())
+      .height(this.$el.$wrap.height());
   }
-  reset () {
+  reset() {
     this.current = 50;
     this.target = 50;
   }
-  update () {
+  update() {
     this.current += (this.target - this.current) * 0.1;
-    this.$el.$after.css ('width', parseFloat (this.current).toFixed (1) + '%');
-    this.$el.$divider.css ('left', parseFloat (this.current).toFixed (1) + '%');
+    this.$el.$after.css("width", parseFloat(this.current).toFixed(1) + "%");
+    this.$el.$divider.css("left", parseFloat(this.current).toFixed(1) + "%");
   }
 }
 
 /* --- Class: Pan Axis Class --- */
 class Covert_PanAxis {
-  constructor (sens) {
+  constructor(sens) {
     let _self = this;
     this.xs = 0;
     this.xd = 0;
@@ -172,8 +168,8 @@ class Covert_PanAxis {
     this.ax = 0;
     this.sens = sens;
 
-    document.addEventListener (
-      'touchstart',
+    document.addEventListener(
+      "touchstart",
       function (e) {
         _self.xs = e.touches[0].clientX;
         _self.ys = e.touches[0].clientY;
@@ -181,34 +177,34 @@ class Covert_PanAxis {
       false
     );
 
-    document.addEventListener (
-      'touchmove',
+    document.addEventListener(
+      "touchmove",
       function (e) {
         if (!_self.ax) {
           // X
           if (_self.xs) {
-            _self.xd = _self.xd + Math.abs (_self.xs - e.touches[0].clientX);
+            _self.xd = _self.xd + Math.abs(_self.xs - e.touches[0].clientX);
             _self.xs = e.touches[0].clientX;
           }
           if (_self.ys) {
-            _self.yd = _self.yd + Math.abs (_self.ys - e.touches[0].clientY);
+            _self.yd = _self.yd + Math.abs(_self.ys - e.touches[0].clientY);
             _self.ys = e.touches[0].clientY;
           }
 
           // Check Axis
           if (_self.xd > _self.sens) {
-            _self.ax = 'x';
+            _self.ax = "x";
           }
           if (_self.yd > _self.sens) {
-            _self.ax = 'y';
+            _self.ax = "y";
           }
         }
       },
       false
     );
 
-    document.addEventListener (
-      'touchend',
+    document.addEventListener(
+      "touchend",
       function (e) {
         // Reset Values
         _self.xs = 0;
@@ -220,154 +216,152 @@ class Covert_PanAxis {
       false
     );
   }
-  getAxis () {
+  getAxis() {
     return this.ax;
   }
 }
-const baw_axis = new Covert_PanAxis (10);
+const baw_axis = new Covert_PanAxis(10);
 
 /* --- Class: Main Menu --- */
 class Covert_Menu {
-  constructor (_core = null) {
+  constructor(_core = null) {
     const _self = this;
 
     if (_core === null) {
-      console.warn ('Menu Core not specified');
+      console.warn("Menu Core not specified");
       return false;
     }
 
     this.core = _core;
     this.$nav = _core.$dom.nav;
-    this.$main = this.$nav.children ('ul.main-menu');
+    this.$main = this.$nav.children("ul.main-menu");
 
-    if (!this.$main.children ().length) {
-      console.warn ('Main Menu is empty');
+    if (!this.$main.children().length) {
+      console.warn("Main Menu is empty");
       return false;
     }
 
     // Main Menu Active Indicator
-    this.core.$dom.header.append (
+    this.core.$dom.header.append(
       '<span class="covert-active-menu-ind"></span>'
     );
 
     // Add "has-children"
-    this.$main.find ('li').each (function () {
+    this.$main.find("li").each(function () {
       if (
-        jQuery (this).children ('ul').length &&
-        !this.classList.contains ('menu-item-has-children')
+        jQuery(this).children("ul").length &&
+        !this.classList.contains("menu-item-has-children")
       ) {
-        this.classList.add ('menu-item-has-children');
+        this.classList.add("menu-item-has-children");
       }
     });
 
     // Events
     _core.$dom.win
-      .on ('resize', function () {
-        _self.layout ();
-        setTimeout (_self.layout (), 100);
+      .on("resize", function () {
+        _self.layout();
+        setTimeout(_self.layout(), 100);
       })
-      .on ('load', this.layout ());
+      .on("load", this.layout());
 
     // Create Mobile Menu
-    this.mobile_menu = new Covert_Mobile_Menu (this.$nav);
+    this.mobile_menu = new Covert_Mobile_Menu(this.$nav);
   }
-  layout () {
+  layout() {
     const _self = this;
-    let active_pos = '-100%';
-    let active_width = '0px';
-    if (this.$main.children ('.current-menu-ancestor').length) {
-      active_pos = this.$main.children ('.current-menu-ancestor').offset ()
-        .left;
-      active_width = this.$main.children ('.current-menu-ancestor').width ();
+    let active_pos = "-100%";
+    let active_width = "0px";
+    if (this.$main.children(".current-menu-ancestor").length) {
+      active_pos = this.$main.children(".current-menu-ancestor").offset().left;
+      active_width = this.$main.children(".current-menu-ancestor").width();
       if (
         this.$main
-          .children ('.current-menu-ancestor')
-          .hasClass ('menu-item-has-children')
+          .children(".current-menu-ancestor")
+          .hasClass("menu-item-has-children")
       ) {
         active_width -= 20;
       }
     }
-    if (this.$main.children ('.current-menu-parent').length) {
-      active_pos = this.$main.children ('.current-menu-parent').offset ().left;
-      active_width = this.$main.children ('.current-menu-parent').width ();
+    if (this.$main.children(".current-menu-parent").length) {
+      active_pos = this.$main.children(".current-menu-parent").offset().left;
+      active_width = this.$main.children(".current-menu-parent").width();
       if (
         this.$main
-          .children ('.current-menu-parent')
-          .hasClass ('menu-item-has-children')
+          .children(".current-menu-parent")
+          .hasClass("menu-item-has-children")
       ) {
         active_width -= 20;
       }
     }
-    if (this.$main.children ('.current-menu-item').length) {
-      active_pos = this.$main.children ('.current-menu-item').offset ().left;
-      active_width = this.$main.children ('.current-menu-item').width ();
+    if (this.$main.children(".current-menu-item").length) {
+      active_pos = this.$main.children(".current-menu-item").offset().left;
+      active_width = this.$main.children(".current-menu-item").width();
     }
-    active_pos = Math.round (active_pos);
-    active_width = Math.round (active_width);
-    this.core.$dom.header.css ({
-      '--active-left': `${active_pos}px`,
-      '--active-width': `${active_width}px`,
+    active_pos = Math.round(active_pos);
+    active_width = Math.round(active_width);
+    this.core.$dom.header.css({
+      "--active-left": `${active_pos}px`,
+      "--active-width": `${active_width}px`,
     });
   }
 }
 
 /* --- Class: Mobile Menu --- */
 class Covert_Mobile_Menu {
-  constructor ($obj) {
+  constructor($obj) {
     const _self = this;
 
     if ($obj instanceof jQuery) {
       this.$el = $obj;
     } else {
-      this.$el = jQuery ($obj);
+      this.$el = jQuery($obj);
     }
 
     if (
       !this.$el.length ||
-      !this.$el.children ().length ||
-      !this.$el.children ('ul').children ().length
+      !this.$el.children().length ||
+      !this.$el.children("ul").children().length
     ) {
-      console.warn ('Menu Error: Menu not found or is empty.');
+      console.warn("Menu Error: Menu not found or is empty.");
       return false;
     }
-    this.$body = jQuery ('body');
-    this.$nav = jQuery ('<nav class="covert-mobile-nav"/>').appendTo (
-      this.$body
-    );
-    if (this.$el.parents ('header').hasClass ('is-frosted')) {
-      this.$nav.addClass ('is-frosted');
+    this.$body = jQuery("body");
+    this.$nav = jQuery('<nav class="covert-mobile-nav"/>').appendTo(this.$body);
+    if (this.$el.parents("header").hasClass("is-frosted")) {
+      this.$nav.addClass("is-frosted");
     }
-    this.$menu = jQuery ('<ul class="covert-mobile-menu"/>').appendTo (
-      this.$nav
-    );
-    this.$el.children ('ul').children ().each (function () {
-      jQuery (this).clone ().appendTo (_self.$menu);
-    });
-    this.$overlay = jQuery (
+    this.$menu = jQuery('<ul class="covert-mobile-menu"/>').appendTo(this.$nav);
+    this.$el
+      .children("ul")
+      .children()
+      .each(function () {
+        jQuery(this).clone().appendTo(_self.$menu);
+      });
+    this.$overlay = jQuery(
       '<div class="covert-mobile-menu-overlay"/>'
-    ).appendTo (this.$body);
-    this.$menu.find ('a[href="#"]').each (function () {
-      this.setAttribute ('href', 'javascript:void(0)');
-      this.addEventListener ('click', e => {
-        e.preventDefault ();
-        this.classList.toggle ('is-active');
-        jQuery (this).parent ('li').children ('ul').slideToggle (300);
+    ).appendTo(this.$body);
+    this.$menu.find('a[href="#"]').each(function () {
+      this.setAttribute("href", "javascript:void(0)");
+      this.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.classList.toggle("is-active");
+        jQuery(this).parent("li").children("ul").slideToggle(300);
       });
     });
 
     // Events
-    jQuery ('.covert-mobile-menu-toggler').on ('click', function () {
-      _self.$body.toggleClass ('show-menu');
+    jQuery(".covert-mobile-menu-toggler").on("click", function () {
+      _self.$body.toggleClass("show-menu");
     });
-    this.$overlay.on ('click', function () {
-      _self.$body.removeClass ('show-menu');
+    this.$overlay.on("click", function () {
+      _self.$body.removeClass("show-menu");
     });
   }
 }
 
 /* --- Class: Infinite List --- */
 class Covert_Infinite_List {
-  constructor ($obj = null, cfg = {}) {
+  constructor($obj = null, cfg = {}) {
     if ($obj === null) {
       return false;
     }
@@ -376,9 +370,9 @@ class Covert_Infinite_List {
     if ($obj instanceof jQuery) {
       this.$el = $obj;
     } else {
-      this.$el = jQuery ($obj);
+      this.$el = jQuery($obj);
     }
-    this.cfg = Object.assign (
+    this.cfg = Object.assign(
       {
         touchSpeed: 0.05,
         dragSpeed: 0.05,
@@ -386,117 +380,117 @@ class Covert_Infinite_List {
       cfg
     );
     this.isTouchDevice =
-      'ontouchstart' in window ||
+      "ontouchstart" in window ||
       navigator.maxTouchPoints > 0 ||
       navigator.msMaxTouchPoints > 0;
-    this.init ();
+    this.init();
 
     // Scroll Event
-    document.addEventListener ('wheel', function (e) {
-      let scroll_path = e.deltaY * 0.25 / window.innerHeight * 100;
+    document.addEventListener("wheel", function (e) {
+      let scroll_path = ((e.deltaY * 0.25) / window.innerHeight) * 100;
       _self.pos.target -= scroll_path;
     });
     // Touch Event
     if (this.cfg.touchSpeed > 0) {
       // Touch Events
-      this.$el.on ('touchstart', function (e) {
-        _self.moveStart (e);
+      this.$el.on("touchstart", function (e) {
+        _self.moveStart(e);
       });
-      this.$el.on ('touchmove', function (e) {
-        if (baw_axis.getAxis () === 'y') {
-          _self.moveDrag (e);
+      this.$el.on("touchmove", function (e) {
+        if (baw_axis.getAxis() === "y") {
+          _self.moveDrag(e);
         }
       });
-      this.$el.on ('touchend', function () {
-        _self.moveEnd ();
+      this.$el.on("touchend", function () {
+        _self.moveEnd();
       });
     }
     // Mouse Drag Event
     if (this.cfg.dragSpeed > 0) {
-      this.$el.on ('mousedown', function (e) {
-        _self.moveStart (e);
+      this.$el.on("mousedown", function (e) {
+        _self.moveStart(e);
       });
-      this.$el.on ('mousemove', function (e) {
-        _self.moveDrag (e);
+      this.$el.on("mousemove", function (e) {
+        _self.moveDrag(e);
       });
-      this.$el.on ('mouseup', function (e) {
-        _self.moveEnd ();
+      this.$el.on("mouseup", function (e) {
+        _self.moveEnd();
       });
-      this.$el.on ('mouseleave', function (e) {
-        _self.moveEnd ();
+      this.$el.on("mouseleave", function (e) {
+        _self.moveEnd();
       });
     }
     // Hover Event
     this.$el
-      .on ('mouseenter', '.covert-infinite-list-item', function () {
-        _self.$el.addClass ('is-hovererd');
-        let $preview = _self.$bg_wrap.children (
-          '[data-id="' + this.getAttribute ('data-id') + '"]'
+      .on("mouseenter", ".covert-infinite-list-item", function () {
+        _self.$el.addClass("is-hovererd");
+        let $preview = _self.$bg_wrap.children(
+          '[data-id="' + this.getAttribute("data-id") + '"]'
         );
-        _self.$bg_wrap.children ('.is-active').removeClass ('is-active');
-        $preview.addClass ('is-active');
-        if ('video' === $preview.attr ('data-type')) {
-          jQuery (this)
-            .children ('.covert-infinite-list-preview')
-            .children ('video')[0]
-            .play ();
-          $preview.children ('video')[0].play ();
+        _self.$bg_wrap.children(".is-active").removeClass("is-active");
+        $preview.addClass("is-active");
+        if ("video" === $preview.attr("data-type")) {
+          jQuery(this)
+            .children(".covert-infinite-list-preview")
+            .children("video")[0]
+            .play();
+          $preview.children("video")[0].play();
         }
       })
-      .on ('mouseleave', '.covert-infinite-list-item', function () {
-        _self.$el.removeClass ('is-hovererd');
-        let $preview = _self.$bg_wrap.children (
-          '[data-id="' + this.getAttribute ('data-id') + '"]'
+      .on("mouseleave", ".covert-infinite-list-item", function () {
+        _self.$el.removeClass("is-hovererd");
+        let $preview = _self.$bg_wrap.children(
+          '[data-id="' + this.getAttribute("data-id") + '"]'
         );
         //$preview.removeClass('is-active');
-        if ('video' === $preview.attr ('data-type')) {
-          jQuery (this)
-            .children ('.covert-infinite-list-preview')
-            .children ('video')[0]
-            .pause ();
-          $preview.children ('video')[0].pause ();
+        if ("video" === $preview.attr("data-type")) {
+          jQuery(this)
+            .children(".covert-infinite-list-preview")
+            .children("video")[0]
+            .pause();
+          $preview.children("video")[0].pause();
         }
       });
     // Prevent Links from opening while Drag
-    this.$el.on ('click', 'a', function (e) {
+    this.$el.on("click", "a", function (e) {
       if (_self.linkMove) {
-        e.preventDefault ();
+        e.preventDefault();
         return false;
       }
       _self.linkMove = false;
       _self.linkDown = false;
     });
     // Window Event
-    jQuery (window)
-      .on ('resize', function () {
+    jQuery(window)
+      .on("resize", function () {
         if (this.isTouchDevice) {
-          _self.play_pause_video ();
+          _self.play_pause_video();
         }
       })
-      .on ('orientationchange', function () {
+      .on("orientationchange", function () {
         if (this.isTouchDevice) {
-          _self.play_pause_video ();
+          _self.play_pause_video();
         }
       });
-    this.play_pause_video ();
+    this.play_pause_video();
   }
-  play_pause_video () {
+  play_pause_video() {
     if (this.isTouchDevice) {
-      this.$el.find ('video').each (function () {
-        this.play ();
+      this.$el.find("video").each(function () {
+        this.play();
       });
     } else {
-      this.$el.find ('video').each (function () {
-        this.pause ();
+      this.$el.find("video").each(function () {
+        this.pause();
       });
     }
   }
-  init () {
+  init() {
     const _self = this;
 
     // SIZES
     this.sizes = {
-      win: jQuery (window).height (),
+      win: jQuery(window).height(),
     };
     this.pos = {
       target: 0,
@@ -512,65 +506,65 @@ class Covert_Infinite_List {
     this.touchPoint = 0;
 
     // DOM
-    this.$list = this.$el.children ('.covert-infinite-list');
-    this.$bg_wrap = jQuery (
-      '<div class="covert-infinite-list-bgs"/>'
-    ).appendTo (this.$el);
-    this.$scroll = jQuery ('<div class="covert-infinite-scroll"/>').appendTo (
+    this.$list = this.$el.children(".covert-infinite-list");
+    this.$bg_wrap = jQuery('<div class="covert-infinite-list-bgs"/>').appendTo(
       this.$el
     );
-    this.$cloned_list = jQuery (
+    this.$scroll = jQuery('<div class="covert-infinite-scroll"/>').appendTo(
+      this.$el
+    );
+    this.$cloned_list = jQuery(
       '<div class="covert-infinite-scroll-inner"/>'
-    ).appendTo (this.$scroll);
+    ).appendTo(this.$scroll);
     this.first_circle = true;
-    this.clone_items ();
+    this.clone_items();
 
     // Ready Flag
     this.isReady = true;
   }
-  clone_items () {
+  clone_items() {
     const _self = this;
-    this.$list.children ().each (function (i) {
-      let $cloned = jQuery (this).clone ();
-      $cloned.attr ('data-id', i);
-      _self.$cloned_list.append ($cloned);
+    this.$list.children().each(function (i) {
+      let $cloned = jQuery(this).clone();
+      $cloned.attr("data-id", i);
+      _self.$cloned_list.append($cloned);
       if (_self.first_circle) {
-        let $preview = $cloned.children ('.covert-infinite-list-preview');
-        let type = $preview.children ('video').length ? 'video' : 'img';
-        let this_src = $preview.children (type).attr ('src');
-        if ('video' === type) {
-          let $video = $preview.children ('video');
-          if ($video.attr ('playsinline') === undefined) {
-            $video.attr ('playsinline', '');
+        let $preview = $cloned.children(".covert-infinite-list-preview");
+        let type = $preview.children("video").length ? "video" : "img";
+        let this_src = $preview.children(type).attr("src");
+        if ("video" === type) {
+          let $video = $preview.children("video");
+          if ($video.attr("playsinline") === undefined) {
+            $video.attr("playsinline", "");
           }
-          if ($video.attr ('muted') === undefined) {
-            $video.attr ('muted');
+          if ($video.attr("muted") === undefined) {
+            $video.attr("muted");
           }
-          if ($video.attr ('loop') === undefined) {
-            $video.attr ('loop', 'true');
+          if ($video.attr("loop") === undefined) {
+            $video.attr("loop", "true");
           }
-          _self.$bg_wrap.append (`
-                    <div class="covertl-bg-preview-item${i === 0 ? ' is-active' : ''}" data-type="video" data-id="${i}" style="background-image:url(${this_src})">
+          _self.$bg_wrap.append(`
+                    <div class="covertl-bg-preview-item${i === 0 ? " is-active" : ""}" data-type="video" data-id="${i}" style="background-image:url(${this_src})">
                         <video src="${this_src}" webkit-playsinline="true" playsinline="true" muted loop></video>
                     </div>`);
         } else {
-          $preview.css ('background-image', 'url(' + this_src + ')');
-          _self.$bg_wrap.append (
-            `<div class="covertl-bg-preview-item${i === 0 ? ' is-active' : ''}" data-type="image" data-id="${i}" style="background-image:url(${this_src})"/>`
+          $preview.css("background-image", "url(" + this_src + ")");
+          _self.$bg_wrap.append(
+            `<div class="covertl-bg-preview-item${i === 0 ? " is-active" : ""}" data-type="image" data-id="${i}" style="background-image:url(${this_src})"/>`
           );
         }
       }
     });
     this.first_circle = false;
-    if (this.$cloned_list.height () < this.$el.height ()) {
-      this.clone_items ();
+    if (this.$cloned_list.height() < this.$el.height()) {
+      this.clone_items();
     } else {
-      this.$scroll.append (this.$cloned_list.clone ());
+      this.$scroll.append(this.$cloned_list.clone());
     }
   }
-  moveStart (e) {
+  moveStart(e) {
     this.linkMove = false;
-    if (jQuery (e.target).is ('a')) {
+    if (jQuery(e.target).is("a")) {
       this.linkDown = true;
     }
     this.isTouched = 1;
@@ -578,11 +572,11 @@ class Covert_Infinite_List {
       this.touchPoint = e.touches[0].clientY;
     } else {
       this.touchPoint = e.clientY;
-      this.$el.addClass ('is-grabbed');
+      this.$el.addClass("is-grabbed");
     }
   }
-  moveDrag (e) {
-    e.preventDefault ();
+  moveDrag(e) {
+    e.preventDefault();
     if (this.isTouched) {
       let path;
 
@@ -603,13 +597,13 @@ class Covert_Infinite_List {
       }
     }
   }
-  moveEnd () {
+  moveEnd() {
     this.touchPoint = 0;
     this.isTouched = 0;
-    this.$el.removeClass ('is-grabbed');
+    this.$el.removeClass("is-grabbed");
     this.linkDown = false;
   }
-  update (time = {delta: 0, elapsed: 0}) {
+  update(time = { delta: 0, elapsed: 0 }) {
     this.pos.current += (this.pos.target - this.pos.current) * 0.1;
     if (this.pos.current < -50) {
       let diff = this.pos.target - this.pos.current;
@@ -621,13 +615,13 @@ class Covert_Infinite_List {
       this.pos.current = -50;
       this.pos.target = -1 * (50 - diff);
     }
-    this.$scroll.css ('transform', 'translateY(' + this.pos.current + '%)');
+    this.$scroll.css("transform", "translateY(" + this.pos.current + "%)");
   }
 }
 
 /* --- Class: Animated Marquee --- */
 class Covert_Marquee {
-  constructor ($obj = null) {
+  constructor($obj = null) {
     if ($obj === null) {
       return false;
     }
@@ -636,53 +630,54 @@ class Covert_Marquee {
     if ($obj instanceof jQuery) {
       this.$marquee = $obj;
     } else {
-      this.$marquee = jQuery ($obj);
+      this.$marquee = jQuery($obj);
     }
 
-    this.init_speed = this.$marquee.attr ('data-type') !== undefined
-      ? parseInt (this.$marquee.attr ('data-speed'), 10)
-      : 5000;
+    this.init_speed =
+      this.$marquee.attr("data-type") !== undefined
+        ? parseInt(this.$marquee.attr("data-speed"), 10)
+        : 5000;
     this.speed = this.init_speed;
 
-    this.$inner = this.$marquee.children ('.covert-marquee-inner');
-    this.$content = this.$inner.children ();
-    this.width = this.$inner.find ('.covert-marquee-list').width ();
+    this.$inner = this.$marquee.children(".covert-marquee-inner");
+    this.$content = this.$inner.children();
+    this.width = this.$inner.find(".covert-marquee-list").width();
 
-    if (this.$inner.width () < this.$marquee.width ()) {
-      this.duplicate ();
+    if (this.$inner.width() < this.$marquee.width()) {
+      this.duplicate();
     } else {
-      this.init ();
+      this.init();
     }
   }
-  init () {
-    this.$inner.wrapInner ('<div class="covert-marquee-inner-wrap"/>');
-    this.$inner_cont = this.$inner.children ('.covert-marquee-inner-wrap');
-    this.$inner.append (this.$inner_cont.clone ());
-    this.start ();
+  init() {
+    this.$inner.wrapInner('<div class="covert-marquee-inner-wrap"/>');
+    this.$inner_cont = this.$inner.children(".covert-marquee-inner-wrap");
+    this.$inner.append(this.$inner_cont.clone());
+    this.start();
   }
-  start () {
+  start() {
     // Calculate speed
-    this.speed = 0.5 * this.$inner.width () * (this.init_speed / this.width);
-    this.$inner.css ('animation-duration', this.speed + 'ms');
+    this.speed = 0.5 * this.$inner.width() * (this.init_speed / this.width);
+    this.$inner.css("animation-duration", this.speed + "ms");
 
     // Init Animation
-    this.$marquee.addClass ('is-init');
+    this.$marquee.addClass("is-init");
   }
-  duplicate () {
-    this.$inner.append (this.$content.clone ());
-    if (this.$inner.width () < this.$marquee.width ()) {
-      this.duplicate ();
+  duplicate() {
+    this.$inner.append(this.$content.clone());
+    if (this.$inner.width() < this.$marquee.width()) {
+      this.duplicate();
     } else {
-      this.init ();
+      this.init();
     }
   }
 }
 
 /* --- Class: Masked Block --- */
 class Covert_Masked {
-  constructor ($obj = null, cfg = {}) {
+  constructor($obj = null, cfg = {}) {
     if ($obj === null) {
-      console.warn ('Masked Shape: Item is not specified');
+      console.warn("Masked Shape: Item is not specified");
       return false;
     }
 
@@ -692,14 +687,14 @@ class Covert_Masked {
     if ($obj instanceof jQuery) {
       this.$el = $obj;
     } else {
-      this.$el = jQuery ($obj);
+      this.$el = jQuery($obj);
     }
 
     // Options
-    this.cfg = Object.assign (
+    this.cfg = Object.assign(
       {
-        media_selector: '.covert-masked-media',
-        content_selector: '.covert-masked-content',
+        media_selector: ".covert-masked-media",
+        content_selector: ".covert-masked-content",
         dbr: 24,
         ibr: 32,
       },
@@ -707,26 +702,26 @@ class Covert_Masked {
     );
 
     // Define DOM
-    this.$media = this.$el.find (this.cfg.media_selector).length
-      ? this.$el.find (this.cfg.media_selector)
+    this.$media = this.$el.find(this.cfg.media_selector).length
+      ? this.$el.find(this.cfg.media_selector)
       : false;
-    this.$content = this.$el.find (this.cfg.content_selector).length
-      ? this.$el.find (this.cfg.content_selector)
+    this.$content = this.$el.find(this.cfg.content_selector).length
+      ? this.$el.find(this.cfg.content_selector)
       : false;
 
     if (this.$content === false) {
-      console.warn ('Masked Shape: Content is not specified');
+      console.warn("Masked Shape: Content is not specified");
       return false;
     }
     if (this.$media === false) {
-      console.warn ('Masked Shape: Media is not specified');
+      console.warn("Masked Shape: Media is not specified");
       return false;
     }
-    this.id = 'mask_' + Math.random ().toString (36).substr (2, 9);
+    this.id = "mask_" + Math.random().toString(36).substr(2, 9);
 
     // Get Path
-    this.path = this.get_path ();
-    this.$mask = jQuery (`
+    this.path = this.get_path();
+    this.$mask = jQuery(`
         <svg width="0" height="0">
             <defs>
                 <clipPath id="${this.id}">
@@ -734,84 +729,84 @@ class Covert_Masked {
                 </clipPath>
             </defs>
         </svg>`);
-    this.$mask.css ({
-      position: 'absolute',
+    this.$mask.css({
+      position: "absolute",
       left: 0,
       top: 0,
-      'pointer-events': 'none',
+      "pointer-events": "none",
       opacity: 0,
     });
     this.$path = this.$mask
-      .children ('defs')
-      .children ('clipPath')
-      .children ('path');
-    this.$el.append (this.$mask);
-    this.$media.css ('clip-path', `url(#${this.id})`);
+      .children("defs")
+      .children("clipPath")
+      .children("path");
+    this.$el.append(this.$mask);
+    this.$media.css("clip-path", `url(#${this.id})`);
 
     // Events
-    jQuery (window)
-      .on ('resize', function () {
-        _self.layout ();
-        setTimeout (
+    jQuery(window)
+      .on("resize", function () {
+        _self.layout();
+        setTimeout(
           function () {
-            _self.layout ();
+            _self.layout();
           },
           10,
           _self
         );
       })
-      .on ('load', function () {
-        _self.layout ();
+      .on("load", function () {
+        _self.layout();
       });
   }
-  get_path () {
+  get_path() {
     let path = ``,
-      cw = this.$content.width (),
-      ch = this.$content.height (),
-      tw = this.$el.width (),
-      th = this.$el.height (),
-      br = parseInt (
-        this.$el.css ('--masked-border-radius') !== undefined
-          ? this.$el.css ('--masked-border-radius')
+      cw = this.$content.width(),
+      ch = this.$content.height(),
+      tw = this.$el.width(),
+      th = this.$el.height(),
+      br = parseInt(
+        this.$el.css("--masked-border-radius") !== undefined
+          ? this.$el.css("--masked-border-radius")
           : this.cfg.dbr,
         10
       ),
-      ibr = parseInt (
-        this.$el.css ('--masked-inner-radius') !== undefined
-          ? this.$el.css ('--masked-inner-radius')
+      ibr = parseInt(
+        this.$el.css("--masked-inner-radius") !== undefined
+          ? this.$el.css("--masked-inner-radius")
           : br,
         10
       ),
       d_rect = {},
-      pos = '';
+      pos = "";
 
     // Get Postion
-    if (this.$content.css ('position') !== 'absolute' || cw === 0 || ch === 0) {
-      pos = 'default';
+    if (this.$content.css("position") !== "absolute" || cw === 0 || ch === 0) {
+      pos = "default";
     } else {
-      let t_rect = this.$el[0].getBoundingClientRect (),
-        c_rect = this.$content[0].getBoundingClientRect ();
-      d_rect.top = Math.round (c_rect.top - t_rect.top);
-      d_rect.bottom = Math.round (t_rect.bottom - c_rect.bottom);
-      d_rect.left = Math.round (c_rect.left - t_rect.left);
-      d_rect.right = Math.round (t_rect.right - c_rect.right);
+      let t_rect = this.$el[0].getBoundingClientRect(),
+        c_rect = this.$content[0].getBoundingClientRect();
+      d_rect.top = Math.round(c_rect.top - t_rect.top);
+      d_rect.bottom = Math.round(t_rect.bottom - c_rect.bottom);
+      d_rect.left = Math.round(c_rect.left - t_rect.left);
+      d_rect.right = Math.round(t_rect.right - c_rect.right);
 
       if (d_rect.top === 0 || d_rect.bottom === 0) {
-        pos = parseInt (this.$content.css ('bottom'), 10) === 0 ? 'b' : 't';
+        pos = parseInt(this.$content.css("bottom"), 10) === 0 ? "b" : "t";
       } else {
-        pos = 'v';
+        pos = "v";
       }
       if (d_rect.left === 0 || d_rect.right === 0) {
-        pos += parseInt (this.$content.css ('right'), 10) === 0 ? 'r' : 'l';
+        pos += parseInt(this.$content.css("right"), 10) === 0 ? "r" : "l";
       } else {
-        pos += 'h';
+        pos += "h";
       }
     }
 
     // Mask Path
     switch (pos) {
       // Top Right
-      case 'tr':
+      case "tr":
         path += `
                 M0,${br}
                 a${br},${br} 0 0 1 ${br},-${br} 
@@ -828,7 +823,7 @@ class Covert_Masked {
                 `;
         break;
       // Bottom Right
-      case 'br':
+      case "br":
         path += `
                 M0,${br} 
                 a${br},${br} 0 0 1 ${br},-${br} 
@@ -845,7 +840,7 @@ class Covert_Masked {
                 `;
         break;
       // Bottom Left
-      case 'bl':
+      case "bl":
         path += `
                 M0,${br} 
                 a${br},${br} 0 0 1 ${br},-${br} 
@@ -862,7 +857,7 @@ class Covert_Masked {
                 `;
         break;
       // Top Left
-      case 'tl':
+      case "tl":
         path += `
                 M0,${ch + br} 
                 a${br},${br} 0 0 1 ${br},-${br} 
@@ -879,7 +874,7 @@ class Covert_Masked {
                 `;
         break;
       // Bottom Edge
-      case 'bh':
+      case "bh":
         path += `
                 M0,${br} 
                 a${br},${br} 0 0 1 ${br},-${br} 
@@ -899,7 +894,7 @@ class Covert_Masked {
                 `;
         break;
       // Top Edge
-      case 'th':
+      case "th":
         path += `
                 M0,${br} 
                 a${br},${br} 0 0 1 ${br},-${br} 
@@ -920,7 +915,7 @@ class Covert_Masked {
                 `;
         break;
       // Left Edge
-      case 'vl':
+      case "vl":
         path += `
                 M0,${br} 
                 a${br},${br} 0 0 1 ${br},-${br} 
@@ -941,7 +936,7 @@ class Covert_Masked {
                 `;
         break;
       // Right Edge
-      case 'vr':
+      case "vr":
         path += `
                 M0,${br} 
                 a${br},${br} 0 0 1 ${br},-${br} 
@@ -979,14 +974,14 @@ class Covert_Masked {
 
     return path;
   }
-  layout () {
-    this.path = this.get_path ();
-    this.$path.attr ('d', this.path);
+  layout() {
+    this.path = this.get_path();
+    this.$path.attr("d", this.path);
   }
 }
 
 class Covert_LWP {
-  constructor ($obj = null) {
+  constructor($obj = null) {
     if ($obj === null) {
       return false;
     }
@@ -995,63 +990,60 @@ class Covert_LWP {
     if ($obj instanceof jQuery) {
       this.$el = $obj;
     } else {
-      this.$el = jQuery ($obj);
+      this.$el = jQuery($obj);
     }
 
-    this.$list = this.$el.children ();
-    this.$media = jQuery (
+    this.$list = this.$el.children();
+    this.$media = jQuery(
       '<div class="covert-lwp-media" data-appear="fade-right"/>'
-    ).prependTo (this.$el);
-    this.count = this.$list.children ('.covert-lwp-item').length;
+    ).prependTo(this.$el);
+    this.count = this.$list.children(".covert-lwp-item").length;
     this.active = 0;
     this.prev = 1;
 
-    this.$list.children ('.covert-lwp-item').each (function (i) {
-      let $item = jQuery (this),
-        $img = $item.children ('img').clone (),
+    this.$list.children(".covert-lwp-item").each(function (i) {
+      let $item = jQuery(this),
+        $img = $item.children("img").clone(),
         idx = _self.count - i;
 
-      $img.appendTo (_self.$media);
-      $img.css ({
+      $img.appendTo(_self.$media);
+      $img.css({
         transform: `translateX(-${100 * i}%)`,
-        'z-index': idx,
+        "z-index": idx,
       });
 
       if (i === 0) {
-        $item.addClass ('is-active').addClass ('is-accented');
-        $img.addClass ('is-active');
+        $item.addClass("is-active").addClass("is-accented");
+        $img.addClass("is-active");
       }
 
-      $item.on ('mouseenter', function () {
+      $item.on("mouseenter", function () {
         if (i !== _self.active) {
           _self.prev = _self.active;
           _self.active = i;
-          _self.setItem ();
+          _self.setItem();
         }
       });
     });
   }
-  setItem () {
-    this.$media.children ().css ('z-index', 0).removeClass ('is-active');
+  setItem() {
+    this.$media.children().css("z-index", 0).removeClass("is-active");
     this.$media
-      .children ()
-      .eq (this.prev)
-      .css ('z-index', this.count)
-      .addClass ('is-prev');
+      .children()
+      .eq(this.prev)
+      .css("z-index", this.count)
+      .addClass("is-prev");
     this.$media
-      .children ()
-      .eq (this.active)
-      .css ('z-index', this.count + 1)
-      .addClass ('is-active');
+      .children()
+      .eq(this.active)
+      .css("z-index", this.count + 1)
+      .addClass("is-active");
 
+    this.$list.children().removeClass("is-active").removeClass("is-accented");
     this.$list
-      .children ()
-      .removeClass ('is-active')
-      .removeClass ('is-accented');
-    this.$list
-      .children ()
-      .eq (this.active)
-      .addClass ('is-active')
-      .addClass ('is-accented');
+      .children()
+      .eq(this.active)
+      .addClass("is-active")
+      .addClass("is-accented");
   }
 }
