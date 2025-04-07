@@ -216,6 +216,7 @@
   }
   #pricing .text {
     width: 355px;
+    margin-bottom: 94px;
   }
   #pricing .text .dashed {
     width: 86px;
@@ -232,14 +233,29 @@
     font-size: 16px;
     width: 310px;
   }
+  #pricing-details {
+    margin-top: -63px;
+  }
   #pricing-details .content {
     width: 936px;
   }
+  .swiper-backface-hidden .swiper-slide,
+  #pricing-details .content .step {
+    width: 318px !important;
+    padding: 0;
+  }
   #pricing-details .content .step .top,
   #pricing-details .content .step .bottom,
-  #pricing-details .content .step:nth-child(2) .top,
-  #pricing-details .content .step:nth-child(2) .bottom {
+  #pricing-details .content .swiper-slide:nth-child(2) .step .top,
+  #pricing-details .content .swiper-slide:nth-child(2) .step .bottom {
     width: 300px;
+  }
+  #pricing-details .content .swiper-slide:nth-child(2) .bottom {
+    height: 500px;
+  }
+
+  #pricing-details .content .step .bottom {
+    padding: 30px 24px 38px;
   }
   #pricing-details .content .step .bottom .button-book img.dashed-buttom {
     width: 216px;
@@ -257,4 +273,37 @@
     padding: 10px 12px;
     gap: 8px;
   }
+  #pricing-details .content .step .bottom ul {
+    gap: 2px;
+  }
+  #pricing-details .content .step .bottom ul li p {
+    font-size: 14px;
+    line-height: 130%;
+  }
+
+  #pricing-details .content .step .bottom h3 {
+    margin-bottom: 24px;
+  }
+  /* slider pricing */
+  .swiper-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .swiper-slide {
+    width: 318px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* */
 }

@@ -70,6 +70,7 @@ section > div {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin: 0 !important;
 }
 
 h1,
@@ -596,7 +597,8 @@ p.lead {
   z-index: 11;
 }
 
-#pricing-details .content {
+#pricing-details .content,
+#pricing-details .content .swiper-wrapper {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -605,12 +607,18 @@ p.lead {
   width: 1128px;
 }
 
+#pricing-details .content .stg-row div {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
 #pricing-details .content .step {
   height: auto;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+  padding: 0 9px;
 }
 
 #pricing-details .content .step .top {
@@ -633,7 +641,7 @@ p.lead {
   transform: translateY(5px);
 }
 
-#pricing-details .content .step:nth-child(2) .top {
+#pricing-details .content .swiper-slide:nth-child(2) .step .top {
   border-width: 5px;
   width: 324px;
   height: 168px;
@@ -673,7 +681,7 @@ p.lead {
   margin-bottom: 15px;
 }
 
-#pricing-details .content .step:nth-child(2) .top h4 {
+#pricing-details .content .swiper-slide:nth-child(2) .step .top h4 {
   font-size: 32px;
 }
 
@@ -688,7 +696,7 @@ p.lead {
   margin-bottom: 5px;
 }
 
-#pricing-details .content .step:nth-child(2) .top h2 {
+#pricing-details .content .swiper-slide:nth-child(2) .step .top h2 {
   font-size: 50px;
 }
 
@@ -702,7 +710,7 @@ p.lead {
   margin-bottom: 0;
 }
 
-#pricing-details .content .step:nth-child(2) .content-top p {
+#pricing-details .content .swiper-slide:nth-child(2) .step .content-top p {
   font-size: 20px;
 }
 
@@ -723,7 +731,7 @@ p.lead {
   border-radius: 0px 0px 10px 10px;
 }
 
-#pricing-details .content .step:nth-child(2) .bottom {
+#pricing-details .content .swiper-slide:nth-child(2) .step .bottom {
   border: 5px solid #007aff;
   width: 324px;
   height: 532px;
@@ -769,6 +777,7 @@ p.lead {
   position: absolute;
   width: 250px;
   height: 40px;
+  pointer-events: all;
 }
 #pricing-details .content .step .bottom .button-book img.dashed-buttom {
   width: 266px;
@@ -776,7 +785,7 @@ p.lead {
 }
 
 #pricing-details p.lead {
-  margin: 35px auto;
+  margin: 32px auto 35px;
   font-size: 18px;
 }
 

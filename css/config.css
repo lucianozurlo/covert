@@ -296,8 +296,8 @@
   --stg-container-width: 1422px;
 
   /* Grid: Default Gap */
-  --stg-gap: 32px;
-  --stg-d-gap: 32px;
+  --stg-gap: 0;
+  --stg-d-gap: 0;
 
   /* Grid: Extra Small Gap */
   --stg-xs-gap: 8px;
