@@ -522,4 +522,22 @@
     letter-spacing: unset !important;
     line-height: 100%;
   }
+
+  #solution-footer .text {
+    width: 337px;
+    margin-bottom: 42px;
+  }
+
+  #solution-footer .text .dashed {
+    width: 119px;
+    height: 39px;
+    min-height: 39px;
+    font-size: 16px;
+    background-image: url("../img/dashed-solution-color-mob.png");
+  }
+
+  #solution-footer .text h2 {
+    width: 100%;
+    font-size: 32px;
+  }
 }
