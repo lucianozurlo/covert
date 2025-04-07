@@ -211,4 +211,25 @@
     height: auto;
     margin: 30px -30%;
   }
+  #pricing {
+    padding-top: 50px;
+  }
+  #pricing .text {
+    width: 355px;
+  }
+  #pricing .text .dashed {
+    width: 86px;
+    height: 39px;
+    min-height: 39px;
+    font-size: 16px;
+    background-image: url(../img/dashed-pricing-mob.png);
+  }
+  #pricing .text h2 {
+    font-size: 32px;
+    width: 340px;
+  }
+  #pricing .text p {
+    font-size: 16px;
+    width: 310px;
+  }
 }
