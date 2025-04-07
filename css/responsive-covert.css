@@ -13,6 +13,11 @@
   .stg-row > .stg-col-12 {
     margin: 0;
   }
+
+  .pattern {
+    background-size: 20% !important;
+  }
+
   #covert-header.is-sticky {
     position: relative;
   }
