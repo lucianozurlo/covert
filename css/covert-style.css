@@ -18,6 +18,9 @@ img {
 .color {
   color: #007aff !important;
 }
+.mob {
+  display: none !important;
+}
 /* BODY */
 body {
   font-family: "Work Sans", sans-serif;
