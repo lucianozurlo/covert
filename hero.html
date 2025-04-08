@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Parallax con Imágenes en Capas</title>
+    <style>
+        /* Para simular suficiente scroll en la página */
+        body {
+            height: 300vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Contenedor de las imágenes */
+        .container {
+            position: relative;
+            width: 280px;
+            height: 565px;
+            margin: 50px auto;
+            /* margen para demostrar el efecto de scroll */
+        }
+
+        /* Todas las imágenes se posicionan de forma absoluta */
+        .container img {
+            position: absolute;
+            left: 0;
+            width: 280px;
+        }
+
+        /* Las imágenes de fondo y frente usan la altura completa (565px) */
+        .bg,
+        .fg {
+            top: 0;
+            height: 565px;
+        }
+
+        /* La imagen del medio es más chica (278px) y se inicia en top: 0 */
+        .middle {
+            top: 0;
+            height: 278px;
+            z-index: 2;
+            /* Se usará transform para modificar su posición vertical */
+            transition: transform 0.1s ease-out;
+            /* opcional, para suavizar el efecto */
+        }
+
+        /* Orden de capas */
+        .bg {
+            z-index: 1;
+        }
+
+        .fg {
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenedor con las 3 imágenes -->
+    <div class="container">
+        <img src="img/hero1.svg" alt="Fondo" class="bg">
+        <img src="img/hero2.svg" alt="Medio" class="middle">
+        <img src="img/hero3.svg" alt="Frente" class="fg">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('.container');
+            const middleImg = document.querySelector('.middle');
+
+            // Diferencia de alturas para lograr la alineación de fondo:
+            // Cuando la imagen del medio se desplace 565 - 278 = 287px,
+            // su parte inferior coincidirá con la de las imágenes de fondo y frente.
+            const maxOffset = 565 - 278; // 287px
+
+            // Factor para que la imagen del medio se mueva más lento.
+            // Puede ajustarse. Valor menor que 1 implica que se desplaza menos
+            // que el contenedor (efecto parallax).
+            const factor = 0.5;
+
+            // Se guarda la posición inicial del contenedor respecto al viewport.
+            const initialContainerTop = container.getBoundingClientRect().top;
+
+            window.addEventListener('scroll', () => {
+                const containerRect = container.getBoundingClientRect();
+                // delta es cuánto se ha movido el contenedor desde su posición inicial.
+                const delta = initialContainerTop - containerRect.top;
+
+                // Calculamos el desplazamiento para la imagen del medio (efecto parallax)
+                let offset = delta * factor;
+                // Lo limitamos para que nunca supere el máximo deseado (287px)
+                if (offset > maxOffset) offset = maxOffset;
+
+                // La imagen del medio se mueve mediante transform,
+                // de forma que su posición efectiva (en el viewport) sea:
+                // containerRect.top + offset
+                middleImg.style.transform = `translateY(${offset}px)`;
+            });
+        });
+    </script>
+</body>
+
+</html>

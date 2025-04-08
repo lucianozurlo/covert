@@ -141,7 +141,7 @@ a:hover.book {
 
 /* HERO */
 #hero {
-  top: 33px;
+  /* top: 33px; */
   padding-top: 120px;
   background-image: url(../img/pattern.png);
   background-repeat: no-repeat;
@@ -205,6 +205,8 @@ p.lead {
   line-height: 120%;
   text-align: center;
   color: #007aff;
+  z-index: 11;
+  margin-top: -50px;
 }
 
 /* logos reel */
@@ -212,6 +214,7 @@ p.lead {
   width: 100%;
   overflow: hidden;
   margin-top: 18px;
+  z-index: 11;
 }
 .carousel {
   display: flex;
@@ -244,7 +247,7 @@ p.lead {
 
 /* PROBLEM */
 #problem {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 150px;
 }
 
@@ -395,6 +398,7 @@ p.lead {
 }
 
 #solution {
+  padding-top: 80px;
   background-color: #002b5b;
   padding-bottom: 0;
   mix-blend-mode: screen;
