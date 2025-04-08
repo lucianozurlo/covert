@@ -58,6 +58,7 @@ section > div {
 
 .stg-row {
   margin: 0;
+  justify-content: space-evenly;
 }
 .stg-row > .stg-col-100,
 .stg-row > .stg-col-12 {
@@ -65,7 +66,7 @@ section > div {
 }
 
 .stg-row > div {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -387,6 +388,10 @@ p.lead {
 }
 #problem .content .step:last-child .bottom {
   padding: 10px 40px 0;
+}
+
+#problem .content .arrow {
+  width: 100%;
 }
 
 #solution {
@@ -936,6 +941,7 @@ p.lead {
 
 #solution-plus .content.plus {
   margin-top: 90px;
+  justify-content: center;
 }
 
 #solution-plus .content.plus .step .bottom {
@@ -1054,12 +1060,13 @@ p.lead {
 
 #testimonials .stg-row {
   width: 100%;
+  gap: 24px;
 }
 
-#testimonials .stg-row > div {
+/* #testimonials .stg-row > div {
   gap: 0;
   margin: 0 12px !important;
-}
+} */
 
 #testimonials .text {
   display: flex;
@@ -1094,18 +1101,19 @@ p.lead {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px;
-  gap: 28px;
-  width: 1446px;
+  padding: 24px;
+  gap: 0;
+  max-width: 1474px;
+  width: 100%;
 }
 
 #testimonials .content .stg-row > div {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding: 0px;
   gap: 24px;
-  width: 458px;
+  /* width: 458px; */
 }
 
 #testimonials .content .testimonial {
@@ -1115,7 +1123,7 @@ p.lead {
   align-items: flex-start;
   padding: 32px;
   gap: 16px;
-  width: 458px;
+  width: 100%;
   background: #ffffff;
   border: 1px solid #007aff;
   box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.25);
@@ -1134,10 +1142,10 @@ p.lead {
   align-items: flex-start;
   padding: 0px;
   gap: 53px;
-  width: 394px;
+  width: 100%;
 }
 #testimonials .content .testimonial .verbatim p {
-  width: 394px;
+  width: 100%;
   font-family: "Work Sans";
   font-style: normal;
   font-weight: 300;

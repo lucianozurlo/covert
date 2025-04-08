@@ -1,3 +1,166 @@
+@media only screen and (max-width: 1471px) {
+  .covert-header-inner {
+    width: 100%;
+    padding: 0 24px;
+  }
+}
+
+@media only screen and (max-width: 1461px) {
+  .covert-header-inner,
+  footer .content {
+    width: 100%;
+    padding: 0 24px;
+  }
+}
+
+@media only screen and (max-width: 1320px) {
+  #solution-footer .content {
+    gap: 150px;
+  }
+}
+
+@media only screen and (max-width: 1264px) {
+  #solution-details {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #solution-details .stg-row {
+    width: calc(100% - 48px);
+  }
+  #solution-details .stg-row > div {
+    padding: 30px;
+  }
+  #solution-details h3 {
+    text-align: left;
+  }
+  #solution-plus .content.plus {
+    justify-content: space-evenly;
+  }
+  #solution-footer .content {
+    gap: 120px;
+  }
+  #solution-footer .content .book .calendar-content img.arrow {
+    gap: 100px;
+    transform: translate(-63px, -64px);
+    width: 45px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  #problem .content {
+    gap: 12px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  #problem .content .arrow {
+    width: 70px;
+  }
+
+  #solution-plus .content {
+    justify-content: space-around;
+    gap: unset;
+    width: 100%;
+  }
+  #solution-footer .content .book .calendar-content img.arrow {
+    display: none;
+  }
+  #solution-footer .content {
+    gap: 50px;
+  }
+}
+
+@media only screen and (max-width: 1090px) {
+  #problem .content {
+    gap: 22px;
+  }
+  #problem .content .arrow {
+    display: none;
+  }
+  .pattern.solution-footer {
+    padding-bottom: 100px;
+  }
+  #solution-footer .content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #solution-footer .content .steps {
+    width: 502px;
+    padding-bottom: 0;
+  }
+  #solution-footer .content .book {
+    padding-right: 0;
+    width: 502px;
+  }
+  #solution-footer .content .step {
+    width: 502px;
+    gap: 2px;
+    padding-bottom: 0;
+  }
+
+  #modal-wrapper {
+    width: 80%;
+  }
+  #modal-content {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #solution-details .stg-row .img {
+    width: calc(100% - 48px);
+    padding-top: 0;
+  }
+
+  #solution-details .stg-row:nth-child(2) div:first-child {
+    order: 2;
+  }
+
+  #solution-details .stg-row:nth-child(2) div:last-child {
+    order: 1;
+  }
+}
+
+@media only screen and (max-width: 944px) {
+  #problem .content {
+    padding: 0 24px;
+  }
+  #problem .content .step {
+    width: calc(33% - 24px);
+  }
+
+  #problem .content .step .top,
+  #problem .content .step .bottom,
+  #problem .content .step .top h4,
+  #problem .content .step .bottom p {
+    width: 100%;
+  }
+  #problem .content .step:nth-child(1) .bottom,
+  #problem .content .step:nth-child(2) .bottom,
+  #problem .content .step:nth-child(3) .bottom {
+    padding: 10px 24px 0;
+  }
+  #solution-plus .content {
+    gap: 24px;
+    padding: 0 24px;
+  }
+
+  #solution-plus .content .step,
+  #solution-plus .content .step .top,
+  #solution-plus .content .step .top h4,
+  #solution-plus .content .step .bottom {
+    width: 100%;
+  }
+  #solution-plus .content .step .bottom {
+    height: 178px;
+    padding: 30px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .mobNo {
     display: none !important;
@@ -217,14 +380,6 @@
     margin-bottom: 60px;
   }
 
-  #solution-details .stg-row:nth-child(2) div:first-child {
-    order: 2;
-  }
-
-  #solution-details .stg-row:nth-child(2) div:last-child {
-    order: 1;
-  }
-
   #solution-details .stg-row .img {
     width: 100%;
   }
@@ -334,12 +489,7 @@
     gap: 8px;
   }
 
-  #pricing-details .content .step .bottom ul {
-    /* gap: 2px; */
-  }
-
   #pricing-details .content .step .bottom ul li p {
-    /* font-size: 14px; */
     line-height: 130%;
   }
 
@@ -455,6 +605,9 @@
 
   #testimonials .content {
     width: 2862px;
+    padding: 0px;
+    gap: 28px;
+    max-width: unset;
   }
 
   /* slider */
@@ -613,6 +766,7 @@
   }
 
   #modal-close {
-    top: -14px;
+    top: 6px;
+    right: 20px;
   }
 }
