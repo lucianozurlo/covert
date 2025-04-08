@@ -1,34 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covert Revenue</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/config.css">
-    <link type="text/css" rel="stylesheet" href="css/libs.css">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/preload.css">
-    <link type="text/css" rel="stylesheet" href="css/covert-style-v3.css">
-    <link type="text/css" rel="stylesheet" href="css/responsive.css">
-    <link type="text/css" rel="stylesheet" href="css/responsive-covert-v3.css">
+    <title>Preloader: Efecto Llenado, Fade-In y Loading</title>
 
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
-    <style>
-        #hostinger-preview-banner {
-            display: none !important
-        }
-    </style>
+
+
 </head>
 
 <body>
 
+    <!-- Preloader -->
     <div id="preloader">
         <div class="preload-wrapper">
             <img src="img/iso-empty.svg" alt="Imagen de fondo" class="empty-image">
@@ -1227,13 +1212,6 @@
 
     </div>
 
-    <script src="js/lib/jquery.min.js"></script>
-    <script src="js/lib/libs.js"></script>
-    <script src="js/contact_form.js"></script>
-    <script src="js/st-core.js"></script>
-    <script src="js/classes.js"></script>
-    <script src="js/main.js"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const fillImage = document.querySelector('.fill-image');
@@ -1315,22 +1293,27 @@
     </script>
 
     <script>
+        // Helper para formatear números a dos dígitos
         function pad(num) {
             return (num < 10 ? "0" : "") + num;
         }
 
+        // Fecha actual del sistema
         const today = new Date();
         const currentDay = today.getDate();
-        const currentMonth = today.getMonth();
+        const currentMonth = today.getMonth();  // 0 = Jan, ..., 11 = Dec
         const currentYear = today.getFullYear();
 
+        // Función auxiliar para determinar si una fecha es anterior a hoy
         function isBeforeToday(year, month, day) {
             return new Date(year, month, day) < new Date(currentYear, currentMonth, currentDay);
         }
 
+        // Variables para el mes y año mostrados
         let displayedMonth = currentMonth;
         let displayedYear = currentYear;
 
+        // Referencias al DOM
         const monthYearEl = document.getElementById('monthYear');
         const calendarBody = document.getElementById('calendar-body');
         const prevBtn = document.getElementById('prevBtn');
@@ -1340,6 +1323,7 @@
         const modalClose = document.getElementById('modal-close');
         const modalIframe = document.getElementById('modal-iframe');
 
+        // Nombres de los meses en inglés
         const monthNames = [
             'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
@@ -1543,6 +1527,7 @@
         window.addEventListener('resize', initSwiper);
 
     </script>
+
 </body>
 
 </html>

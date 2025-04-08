@@ -13,7 +13,6 @@
     <link type="text/css" rel="stylesheet" href="css/config.css">
     <link type="text/css" rel="stylesheet" href="css/libs.css">
     <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/preload.css">
     <link type="text/css" rel="stylesheet" href="css/covert-style-v3.css">
     <link type="text/css" rel="stylesheet" href="css/responsive.css">
     <link type="text/css" rel="stylesheet" href="css/responsive-covert-v3.css">
@@ -25,18 +24,108 @@
             display: none !important
         }
     </style>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, #0b0b0b 0%, #171717 70%);
+            display: flex;
+            flex-direction: column;
+            /* Imagen arriba, texto abajo */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .preload-wrapper {
+            position: relative;
+            max-width: 100px;
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+        }
+
+        .bg-img,
+        .fill-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .bg-img {
+            opacity: 0.3;
+        }
+
+        .fill-image {
+            clip-path: inset(100% 0 0 0);
+            transition: clip-path 3s linear;
+        }
+
+        #loading-text {
+            color: #fff;
+            font-family: "Work Sans";
+            font-style: normal;
+            font-weight: 300;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        #loading-text .dot {
+            opacity: 0;
+            animation: dotFade 1.5s infinite;
+            display: inline-block;
+        }
+
+        #loading-text .dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        #loading-text .dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes dotFade {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        #contenido {
+            opacity: 0;
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- Preloader -->
     <div id="preloader">
         <div class="preload-wrapper">
-            <img src="img/iso-empty.svg" alt="Imagen de fondo" class="empty-image">
+            <img src="img/iso.svg" alt="Imagen de fondo" class="bg-img">
             <img src="img/iso.svg" alt="Imagen de relleno" class="fill-image">
         </div>
-        <p id="loading-text">
-            Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
-        </p>
+        <p id="loading-text">Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>
     </div>
 
     <div id="mainContent">
@@ -1238,33 +1327,44 @@
         document.addEventListener("DOMContentLoaded", function () {
             const fillImage = document.querySelector('.fill-image');
             const preloader = document.getElementById('preloader');
-            const mainContent = document.getElementById('mainContent');
             const loadingText = document.getElementById('loading-text');
+            const contenido = document.getElementById('contenido');
 
+            // Inicia la animación de llenado de la imagen (clip-path) tras un breve retardo
             setTimeout(() => {
                 fillImage.style.clipPath = 'inset(0 0 0 0)';
             }, 100);
 
+            // Cuando termine la animación de clip-path, se inicia el fade-out y translateY del texto "Loading..."
             fillImage.addEventListener('transitionend', (e) => {
                 if (e.propertyName === 'clip-path') {
-                    loadingText.style.transition = 'transform 1s ease-out, opacity .3s ease-out';
-                    loadingText.style.transform = 'translateY(100%)';
+                    // Aplica transición al texto (fade y translateY)
+                    loadingText.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                     loadingText.style.opacity = '0';
+                    loadingText.style.transform = 'translateY(100%)';
+                }
+            });
 
+            // Cuando finalice la transición del texto (especialmente la opacidad)...
+            loadingText.addEventListener('transitionend', (e) => {
+                if (e.propertyName === 'opacity') {
+                    // Ahora se inicia el fade-out del preloader
                     preloader.style.transition = 'opacity 1s ease-out';
                     preloader.style.opacity = '0';
                 }
             });
 
+            // Cuando la opacidad del preloader llegue a 0, lo ocultamos y mostramos el contenido principal con fade-in
             preloader.addEventListener('transitionend', (e) => {
-                if (e.propertyName === 'opacity' && e.target === preloader) {
+                if (e.propertyName === 'opacity') {
                     preloader.style.display = 'none';
-                    mainContent.style.transition = 'opacity 1s ease-out';
-                    mainContent.style.opacity = '1';
+                    contenido.style.transition = 'opacity 1s ease-out';
+                    contenido.style.opacity = '1';
                 }
             });
         });
     </script>
+
 
     <script>
         function initCarousel(carouselId, speed) {
@@ -1315,22 +1415,27 @@
     </script>
 
     <script>
+        // Helper para formatear números a dos dígitos
         function pad(num) {
             return (num < 10 ? "0" : "") + num;
         }
 
+        // Fecha actual del sistema
         const today = new Date();
         const currentDay = today.getDate();
-        const currentMonth = today.getMonth();
+        const currentMonth = today.getMonth();  // 0 = Jan, ..., 11 = Dec
         const currentYear = today.getFullYear();
 
+        // Función auxiliar para determinar si una fecha es anterior a hoy
         function isBeforeToday(year, month, day) {
             return new Date(year, month, day) < new Date(currentYear, currentMonth, currentDay);
         }
 
+        // Variables para el mes y año mostrados
         let displayedMonth = currentMonth;
         let displayedYear = currentYear;
 
+        // Referencias al DOM
         const monthYearEl = document.getElementById('monthYear');
         const calendarBody = document.getElementById('calendar-body');
         const prevBtn = document.getElementById('prevBtn');
@@ -1340,11 +1445,22 @@
         const modalClose = document.getElementById('modal-close');
         const modalIframe = document.getElementById('modal-iframe');
 
+        // Nombres de los meses en inglés
         const monthNames = [
             'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ];
 
+        /**
+         * Muestra el calendario para un mes y año dados.
+         * Cada día genera una URL para Cal.com en el formato:
+         * https://cal.com/covert-revenue/30min?date=YYYY-MM-DD
+         * Se resalta el día actual y se deshabilitan (se le agrega la clase "disabled")
+         * los días cuya fecha es anterior a hoy.
+         * Al hacer clic en un día (si está habilitado), se abre el modal.
+         * Los enlaces se generan con:
+         *   href="#", data-modal-url="..."
+         */
         function showCalendar(month, year) {
             calendarBody.innerHTML = '';
             monthYearEl.textContent = `${monthNames[month]} ${year}`;
@@ -1352,6 +1468,7 @@
             const prevDaysInMonth = new Date(year, month, 0).getDate();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const firstDayOfMonth = new Date(year, month, 1).getDay();
+            // Ajustamos para que lunes sea el índice 0 (si getDay() es 0 => domingo, lo convertimos a 6)
             const startIndex = (firstDayOfMonth === 0) ? 6 : firstDayOfMonth - 1;
 
             let dayCounter = 1;
@@ -1364,8 +1481,10 @@
                     const cell = document.createElement('td');
                     const cellPos = rowIndex * 7 + colIndex;
                     const link = document.createElement('a');
+                    // Estructura base: href="#" y luego asignaremos data-modal-url
                     link.href = "#";
 
+                    // Listener para abrir el modal al hacer clic (si no está deshabilitado)
                     link.addEventListener('click', function (e) {
                         e.preventDefault();
                         if (!link.classList.contains('disabled')) {
@@ -1373,8 +1492,10 @@
                         }
                     });
 
+                    // Variables para almacenar la fecha asociada a este enlace
                     let linkYear, linkMonth, linkDay;
 
+                    // 1) Días del mes anterior
                     if (cellPos < startIndex) {
                         const prevDay = prevDaysInMonth - (startIndex - cellPos - 1);
                         if (month === 0) {
@@ -1391,6 +1512,7 @@
                         link.textContent = prevDay;
                         cell.classList.add('other-month');
 
+                        // 2) Días del mes actual
                     } else if (dayCounter <= daysInMonth) {
                         linkYear = year;
                         linkMonth = month;
@@ -1404,6 +1526,7 @@
                         }
                         dayCounter++;
 
+                        // 3) Días del mes siguiente
                     } else {
                         if (month === 11) {
                             linkMonth = 0;
@@ -1421,6 +1544,7 @@
                         nextDayCounter++;
                     }
 
+                    // Si la fecha del enlace es anterior a hoy, se deshabilita
                     if (isBeforeToday(linkYear, linkMonth, linkDay)) {
                         link.classList.add('disabled');
                     }
@@ -1433,14 +1557,17 @@
                     break;
                 }
             }
+            // Deshabilitar el botón "Anterior" si se muestra el mes actual
             prevBtn.disabled = (year === currentYear && month === currentMonth);
         }
 
+        // Función para abrir el modal (efecto fade)
         function openModal(url) {
             modalIframe.src = url;
             modal.classList.add("open");
         }
 
+        // Función para cerrar el modal
         function closeModal() {
             modal.classList.remove("open");
             setTimeout(() => {
@@ -1455,6 +1582,7 @@
             }
         });
 
+        // Listeners para los botones de navegación del calendario
         prevBtn.addEventListener('click', () => {
             if (!(displayedYear === currentYear && displayedMonth === currentMonth)) {
                 displayedMonth--;
@@ -1475,8 +1603,10 @@
             showCalendar(displayedMonth, displayedYear);
         });
 
+        // Mostrar el mes actual al cargar la página
         showCalendar(displayedMonth, displayedYear);
 
+        // Listener para otros links con clase covert-button book que deban abrir el modal con URL fija
         document.querySelectorAll('a.covert-button.book').forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1486,13 +1616,16 @@
         });
     </script>
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 
     <script>
         let swiperPricing, swiperTestimonials;
 
         function initSwiper() {
             if (window.innerWidth <= 768) {
+                // Inicializar slider de Pricing Details (inicia en el segundo slide)
                 if (!swiperPricing) {
                     swiperPricing = new Swiper('#pricing-details .swiper-container', {
                         slidesPerView: 3,
@@ -1502,6 +1635,7 @@
                         initialSlide: 1,
                     });
                 }
+                // Inicializar slider de Testimonials (inicia en el primer slide)
                 if (!swiperTestimonials) {
                     swiperTestimonials = new Swiper('#testimonials .swiper-container', {
                         slidesPerView: 9,
@@ -1512,6 +1646,7 @@
                     });
                 }
             } else {
+                // Destruir las instancias de Swiper si el viewport es mayor a 768px
                 if (swiperPricing) {
                     swiperPricing.destroy(true, true);
                     swiperPricing = undefined;
@@ -1521,6 +1656,7 @@
                     swiperTestimonials = undefined;
                 }
 
+                // Mostrar los contenedores como flex y ajustar los slides para que se muestren de forma natural
                 const pricingContainer = document.querySelector('#pricing-details .swiper-container');
                 const testimonialsContainer = document.querySelector('#testimonials .swiper-container');
 
