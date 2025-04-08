@@ -488,10 +488,11 @@ p.lead {
   width: 1200px;
   margin: 0 auto;
   padding-top: 124px;
+  padding-bottom: 95px;
 }
 
 #solution-details .stg-row {
-  margin-bottom: 70px;
+  margin-bottom: 160px;
 }
 
 #solution-details .stg-row > div {
@@ -526,7 +527,7 @@ p.lead {
 #solution-details p.covert-large-text {
   font-family: "Work Sans";
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 18px;
   line-height: 130%;
   color: #1a1a1a;
@@ -566,7 +567,11 @@ p.lead {
   font-size: 16px;
   color: #1a1a1a;
 }
-
+.covert-parallax-media:not([class*="covert-grid"]),
+.covert-parallax-media .st-lazy-wrapper,
+.covert-parallax-image {
+  overflow: visible;
+}
 #solution-details .stg-row .img {
   margin: 0;
   width: calc(50% - 8px);
@@ -576,6 +581,35 @@ p.lead {
   width: 100%;
   height: auto;
   margin: 30px 0;
+}
+
+#solution-details .stg-row:nth-child(1) .text {
+  max-width: 480px;
+  width: 100%;
+}
+
+#solution-details .stg-row:nth-child(1) .covert-parallax-media img {
+  max-width: 640px;
+  width: 100%;
+  margin: -20px 0 0 30px;
+}
+#solution-details .stg-row:nth-child(2) {
+  margin-bottom: 170px;
+}
+
+#solution-details .stg-row:nth-child(2) .covert-parallax-media img {
+  margin: -50px 0 0 -80px;
+}
+
+#solution-details .stg-row:nth-child(3) .text {
+  max-width: 513px;
+  width: 100%;
+}
+
+#solution-details .stg-row:nth-child(3) .covert-parallax-media img {
+  max-width: 635px;
+  width: 105%;
+  margin: -60px 0 0 -50px;
 }
 
 #pricing {
