@@ -220,6 +220,13 @@
     margin-bottom: 10px;
   }
 
+  .hero-container {
+    width: 228px !important;
+  }
+  #hero .hero-container {
+    margin-top: 10px;
+    width: 228px !important;
+  }
   #hero img.main {
     width: 228px;
     height: auto;
@@ -228,6 +235,7 @@
   p.lead {
     font-size: 18px;
     width: 319px;
+    margin-top: -100px;
   }
   .carousel img {
     height: 80px;
@@ -277,14 +285,15 @@
   #problem .content .arrow {
     position: absolute;
     z-index: 11;
+    display: block;
   }
 
   #problem .content .arrow:nth-child(2) {
-    transform: rotate(60deg) scale(0.6) translate(266px, 403px);
+    transform: rotate(60deg) scale(0.8) translate(-254px, 43px);
   }
 
   #problem .content .arrow:nth-child(5) {
-    transform: rotate(170deg) scale(0.4) translate(-130px, -1270px);
+    transform: rotate(170deg) scale(0.4) translate(-290px, -380px);
   }
 
   #problem .content .step .top {
@@ -343,10 +352,17 @@
     width: 100%;
     padding-top: 55px;
   }
+  #solution-details h3 {
+    text-align: center;
+  }
+  #solution-details .stg-row {
+    width: 100%;
+  }
 
   #solution-details .stg-row > div {
     display: flex;
     align-items: center;
+    padding-bottom: 0;
   }
 
   #solution-details h3 {
@@ -362,13 +378,16 @@
     align-items: center;
     width: 360px !important;
     padding-left: 0;
+    padding: 0 14px;
   }
 
   #solution-details ul li {
     list-style-type: none;
     text-align: center;
   }
-
+  #solution-details ul li:last-child {
+    margin-bottom: 0;
+  }
   #solution-details ul h5,
   #solution-details ul p {
     text-align: center;
@@ -380,8 +399,13 @@
     margin-bottom: 60px;
   }
 
+  #solution-details .stg-row:nth-child(2) div .covert-parallax-media img {
+    margin-bottom: -15px !important;
+  }
+
   #solution-details .stg-row .img {
     width: 100%;
+    padding: 0;
   }
 
   #solution-details .stg-row div .line {
@@ -392,7 +416,7 @@
     width: 120%;
     min-width: 120%;
     height: auto;
-    margin: 30px -10%;
+    margin: 30px -10% 15px;
   }
 
   #solution-details .stg-row:nth-child(2) div .covert-parallax-media img {
@@ -437,7 +461,7 @@
   }
 
   #pricing-details {
-    margin-top: -63px;
+    margin-top: -90px;
     padding-bottom: 0;
   }
 
@@ -517,7 +541,12 @@
     justify-content: center;
     align-items: center;
   }
-
+  #pricing-details p.lead {
+    margin: 5px auto 28px;
+  }
+  #solution-plus {
+    padding-bottom: 90px;
+  }
   #solution-plus .text {
     width: 337px;
     margin-bottom: 42px;
@@ -535,7 +564,9 @@
     width: 100%;
     font-size: 32px;
   }
-
+  #solution-plus .text img {
+    transform: translate(148px, 124px) rotate(30deg) scale(0.55);
+  }
   #solution-plus .content {
     flex-direction: column;
     gap: 20px;
@@ -709,15 +740,15 @@
   #solution-footer .content .steps,
   #solution-footer .content .step,
   #solution-footer .content .step .box {
-    width: 280px;
+    width: 260px;
   }
   #solution-footer .content .step .box {
     height: 188px;
   }
   #solution-footer .content .step h3 {
-    font-size: 96px;
+    font-size: 90px;
     position: absolute;
-    transform: translate(-38px, 52px);
+    transform: translate(-58px, 52px);
   }
 
   #solution-footer .content .step .box h4,
@@ -745,6 +776,9 @@
   #solution-footer .content .book .button-book img.dashed-buttom {
     width: 320px;
     height: 60px;
+  }
+  .pattern.solution-footer {
+    padding-bottom: 0;
   }
   footer {
     height: 165px;
