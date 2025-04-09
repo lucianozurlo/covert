@@ -557,11 +557,11 @@
   }
 
   #solution-plus .text .dashed {
-    width: 119px;
+    width: 82px;
     height: 39px;
     min-height: 39px;
     font-size: 16px;
-    background-image: url("../img/dashed-solution-color-mob.png");
+    background-image: url("../img/dashed-whyus.png");
   }
 
   #solution-plus .text h2 {
@@ -717,7 +717,7 @@
   }
 
   #solution-footer .text .dashed {
-    width: 119px;
+    width: 113px;
     height: 39px;
     min-height: 39px;
     font-size: 16px;

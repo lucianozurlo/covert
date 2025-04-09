@@ -885,9 +885,9 @@ p.lead {
 }
 
 #solution-plus .text .dashed {
-  width: 144px;
+  width: 93px;
   font-size: 20px;
-  background-image: url("../img/dashed-solution-color.png");
+  background-image: url("../img/dashed-whyus.png");
   background-size: cover;
 }
 
@@ -1282,7 +1282,7 @@ p.lead {
 }
 
 #solution-footer .text .dashed {
-  width: 144px;
+  width: 128px;
   font-size: 20px;
   background-image: url("../img/dashed-solution-color.png");
   background-size: cover;
