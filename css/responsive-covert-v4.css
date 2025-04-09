@@ -635,7 +635,7 @@
   }
 
   #testimonials .content {
-    width: 2862px;
+    width: calc(100% - 24px);
     padding: 0px;
     gap: 28px;
     max-width: unset;
@@ -666,12 +666,12 @@
   }
   .swiper-backface-hidden .swiper-slide,
   #testimonials .content .swiper-slide div {
-    width: 298px;
+    width: calc(100% - 24px);
     padding: 28px;
   }
 
   #testimonials .content .testimonial {
-    width: 298px;
+    width: calc(100% - 24px);
   }
 
   #testimonials .content .testimonial .verbatim,
