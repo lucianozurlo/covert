@@ -794,15 +794,21 @@
     padding-bottom: 0;
   }
   footer {
-    height: 165px;
+    height: 270px;
   }
   footer .content {
     flex-direction: column;
     width: 100%;
     align-items: center;
+    gap: 30px;
   }
-  footer h4 {
+  footer p {
     font-size: 14px;
+  }
+
+  footer .info {
+    gap: 10px;
+    align-items: center;
   }
 
   #modal-content {
