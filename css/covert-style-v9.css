@@ -1633,7 +1633,7 @@ td a.disabled {
   right: -33px;
   color: #aaa;
   font-size: 34px;
-  font-weight: bold;
+  font-weight: 200;
   cursor: pointer;
   z-index: 10;
   transition: all 0.2s ease-in-out;
