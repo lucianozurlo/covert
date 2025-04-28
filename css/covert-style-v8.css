@@ -1700,7 +1700,6 @@ footer .info p {
 footer .info p a.covert-button {
   color: #f5f5f5 !important;
   text-decoration: underline;
-  opacity: 1;
   width: unset;
   height: inherit;
   border-radius: unset;
@@ -1708,16 +1707,21 @@ footer .info p a.covert-button {
   padding: unset;
   font-weight: unset;
   background: unset;
+}
+
+footer .info a:hover {
+  opacity: 1;
   transition: all 0.2s ease-in-out;
 }
 
-footer .info p a:hover {
+footer .info a:hover {
   opacity: 0.8;
 }
 
 footer .info a img {
   height: 24px;
-  width: 30px;margin-top: 6px;
+  width: 30px;
+  margin-top: 6px;
 }
 
 /* Patterns */
