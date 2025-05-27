@@ -738,12 +738,12 @@ p.lead {
 #pricing-details .content .step .content-top h4 {
    font-family: 'Inter';
    font-style: normal;
-   font-weight: 800;
+   font-weight: 300;
    font-size: 28px;
-   line-height: 120%;
+   line-height: 130%;
    text-align: center;
    color: #fff;
-   margin-bottom: 15px;
+   margin-bottom: 5px;
 }
 
 #pricing-details .content .swiper-slide:nth-child(2) .step .top h4 {
