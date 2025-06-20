@@ -99,6 +99,12 @@
 }
 
 @media only screen and (max-width: 1090px) {
+   nav.covert-nav ul.main-menu {
+      gap: 30px;
+   }
+   .covert-header-mp {
+      padding-right: 50px;
+   }
    #problem .content {
       gap: 22px;
    }
@@ -152,6 +158,12 @@
 }
 
 @media only screen and (max-width: 960px) {
+   nav.covert-nav ul.main-menu {
+      gap: 20px;
+   }
+   .covert-header-mp {
+      padding-right: 30px;
+   }
    #hero .text h1 {
       font-size: 60px;
    }
@@ -190,6 +202,9 @@
 }
 
 @media only screen and (max-width: 944px) {
+   .covert-header-mp {
+      display: none;
+   }
    #problem .content {
       padding: 0 24px;
    }
