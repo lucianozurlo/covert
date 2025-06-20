@@ -255,6 +255,10 @@
       display: flex;
       flex-direction: column;
    }
+   #solution-footer .text h2 {
+      width: 100%;
+      padding: 0 30px;
+   }
 }
 
 @media only screen and (max-width: 854px) {
@@ -849,7 +853,8 @@
    }
 
    #solution-footer .text {
-      width: 337px;
+      /* width: 337px; */
+      max-width: 100%;
       margin-bottom: 42px;
    }
 
@@ -863,12 +868,14 @@
 
    #solution-footer .text h2 {
       width: 100%;
+      padding: 0 30px;
       font-size: 32px;
    }
 
    #solution-footer .text p {
-      font-size: 16px;
-      width: 310px;
+      width: 100%;
+      padding: 0 30px;
+      /* width: 310px; */
    }
 
    #solution-footer .content {
