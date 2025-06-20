@@ -288,14 +288,14 @@ p.lead {
    text-align: center;
    color: #007aff;
    z-index: 11;
-   margin-top: -50px;
+   /* margin-top: -50px; */
 }
 
 /* logos reel */
 .carousel-container {
    width: 100%;
    overflow: hidden;
-   margin-top: 18px;
+   /* margin-top: 18px; */
    z-index: 11;
 }
 .carousel {
