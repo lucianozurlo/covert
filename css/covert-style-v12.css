@@ -48,7 +48,6 @@ ul.main-menu li.current-menu-parent > a {
    display: flex;
    justify-content: flex-end;
    padding-right: 90px;
-   display: none;
 }
 
 nav.covert-nav ul.main-menu {
