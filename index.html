@@ -197,6 +197,7 @@
                                     <img src="img/logos-reel2/linenmaster.png" alt="linenmaster" />
                                     <img src="img/logos-reel2/bend.png" alt="bend" />
                                     <img src="img/logos-reel2/airdeck.png" alt="airdeck" />
+                                    <img src="img/logos-reel2/harrity.png" alt="harrity" />
                                     <img src="img/logos-reel2/massdriver.png" alt="massdriver" />
                                  </div>
                               </div>
@@ -1201,7 +1202,7 @@
                                           alt=""
                                        />
                                     </div> -->
-                                    <div class="calendar-content mobNo">
+                                    <div class="calendar-content">
                                        <div id="calendar">
                                           <div id="calendar-header">
                                              <h2 id="monthYear"></h2>
@@ -1279,7 +1280,11 @@
                               <a href="mailto: hey@covertrevenue.com" target="_blank"
                                  ><img src="img/linkedin-icon.svg" alt=""
                               /></a>
-                              <a href="#" target="_blank"><img src="img/email.svg" alt="" /></a>
+                              <a
+                                 href="https://www.linkedin.com/company/covertrevenue/"
+                                 target="_blank"
+                                 ><img src="img/email.svg" alt=""
+                              /></a>
                            </div>
                         </div>
                      </div>
@@ -1340,49 +1345,50 @@
       </script>
 
       <script>
-         function initCarousel(carouselId, speed) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.parentElement;
-            const originalBlockHTML = carousel.innerHTML;
+         function initCarousel(id, pxPerSec = 40) {
+            const track = document.getElementById(id);
+            const container = track.parentElement;
+            const originals = track.innerHTML; // 1 tanda de logos
 
-            function getBlockWidth(html) {
-               const temp = document.createElement('div');
-               temp.style.display = 'flex';
-               temp.style.visibility = 'hidden';
-               temp.innerHTML = html;
-               container.appendChild(temp);
-               const imgs = temp.querySelectorAll('img');
-               let width = 0;
-               imgs.forEach((img) => {
-                  const imgWidth = img.offsetWidth;
-                  const style = window.getComputedStyle(img);
-                  const marginRight = parseFloat(style.marginRight);
-                  width += imgWidth + marginRight;
+            // ───────── helpers ─────────
+            const imgs = [...track.querySelectorAll('img')];
+
+            // espera a que TODOS los logos tengan ancho y alto reales
+            const onImagesReady = () =>
+               new Promise((res) => {
+                  let loaded = 0;
+                  imgs.forEach((img) => {
+                     if (img.complete) loaded++;
+                     else img.addEventListener('load', () => ++loaded === imgs.length && res());
+                  });
+                  if (loaded === imgs.length) res();
                });
-               container.removeChild(temp);
-               return width;
-            }
 
-            let originalWidth = getBlockWidth(originalBlockHTML);
-            let blockHTML = originalBlockHTML;
-            let blockWidth = originalWidth;
-            const containerWidth = container.clientWidth;
-            while (blockWidth < containerWidth) {
-               blockHTML += originalBlockHTML;
-               blockWidth += originalWidth;
-            }
+            const setup = () => {
+               // 1️⃣ restaura la tanda original
+               track.innerHTML = originals;
 
-            carousel.innerHTML = blockHTML + blockHTML;
-            carousel.style.setProperty('--scroll-distance', blockWidth + 'px');
+               // 2️⃣ mide el ancho de UNA tanda
+               const oneWidth = track.scrollWidth;
 
-            const duration = blockWidth * speed;
-            carousel.style.setProperty('--duration', duration + 's');
+               // 3️⃣ duplica tantas veces como haga falta
+               while (track.scrollWidth < container.clientWidth + oneWidth) {
+                  track.innerHTML += originals;
+               }
+
+               // 4️⃣ define distancia y duración
+               track.style.setProperty('--scroll-distance', oneWidth + 'px');
+               track.style.setProperty('--duration', oneWidth / pxPerSec + 's');
+            };
+
+            // ───────── arranque ─────────
+            onImagesReady().then(setup);
+            window.addEventListener('resize', setup); // si cambia el viewport
          }
 
-         window.addEventListener('load', function () {
-            initCarousel('carousel1', 0.025);
-            initCarousel('carousel2', 0.025);
-         });
+         /* lanzamos ambos carruseles */
+         initCarousel('carousel1', 40); // 40 px/seg ≈ tu 0.025 s por px
+         initCarousel('carousel2', 40);
       </script>
 
       <script>
@@ -1597,14 +1603,14 @@
          let swiperPricing;
 
          function initSwiper() {
-            if (window.innerWidth <= 1011) {
+            if (window.innerWidth <= 1400) {
                if (!swiperPricing) {
                   swiperPricing = new Swiper('#pricing-details .swiper-container', {
-                     slidesPerView: 3,
+                     slidesPerView: 4,
                      centeredSlides: true,
                      spaceBetween: 0,
                      loop: false,
-                     initialSlide: 1,
+                     initialSlide: 0,
                   });
                }
             } else {

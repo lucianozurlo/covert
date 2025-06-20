@@ -219,6 +219,7 @@ a:hover.book {
    line-height: 120%;
    text-align: center;
    color: #1a1a1a;
+   letter-spacing: 0;
 }
 
 /* #hero .text h1 span {
@@ -289,39 +290,39 @@ p.lead {
    color: #007aff;
    z-index: 11;
    /* margin-top: -50px; */
+   max-width: 100%;
+   padding: 0 30px;
 }
 
-/* logos reel */
 .carousel-container {
    width: 100%;
    overflow: hidden;
-   /* margin-top: 18px; */
    z-index: 11;
 }
+
 .carousel {
    display: flex;
-   -webkit-animation: scroll var(--duration, 10s) linear infinite;
-   animation: scroll var(--duration, 10s) linear infinite;
+   gap: 100px; /* mismo espacio entre todos */
+   -webkit-animation: scroll var(--duration) linear infinite;
+   animation: scroll var(--duration) linear infinite;
 }
+
 .carousel.reverse {
    animation-direction: reverse;
 }
+
 .carousel img {
    height: 80px;
-   margin-right: 100px;
+   flex: 0 0 auto;
 }
+
 @-webkit-keyframes scroll {
-   from {
-      transform: translateX(0);
-   }
    to {
       transform: translateX(calc(-1 * var(--scroll-distance)));
    }
 }
+
 @keyframes scroll {
-   from {
-      transform: translateX(0);
-   }
    to {
       transform: translateX(calc(-1 * var(--scroll-distance)));
    }
@@ -381,8 +382,8 @@ p.lead {
 
 #problem .content .step {
    width: 283px;
-   height: 300px;
-   height: auto;
+   /* height: 300px; */
+   height: 100%;
    display: flex;
    justify-content: flex-start;
    flex-direction: column;
@@ -415,9 +416,9 @@ p.lead {
    flex-direction: row;
    justify-content: center;
    align-items: center;
-   padding: 10px 0 0;
+   padding: 32px 0 22px;
    width: 283px;
-   height: 100px;
+   /* height: 100px; */
    border: 1px solid #fff;
    background: #007aff;
    box-shadow:
@@ -487,18 +488,19 @@ p.lead {
 #solution .stg-row {
    margin-bottom: 0;
 }
+
 #solution .text {
    display: flex;
    flex-direction: column;
    align-items: center;
-   padding: 0px;
+   padding: 0 30px;
    gap: 16px;
-   width: 800px;
+   max-width: 880px;
    margin-bottom: 25px;
 }
 
 #solution .text .dashed {
-   width: 152px;
+   width: 151px;
    font-size: 20px;
    color: #fff;
    background-image: url('../img/dashed-solution.png');
@@ -524,7 +526,7 @@ p.lead {
    line-height: 120%;
    text-align: center;
    color: #f5f5f5;
-   width: 650px;
+   max-width: 650px;
 }
 
 #solution img {
@@ -603,6 +605,7 @@ p.lead {
    color: #1a1a1a;
    text-align: left;
    width: 540px;
+   max-width: 100%;
 }
 
 #solution-details ul {
@@ -689,13 +692,14 @@ p.lead {
 #pricing .stg-row {
    margin-bottom: 0;
 }
+
 #pricing .text {
    display: flex;
    flex-direction: column;
    align-items: center;
    padding: 0px;
    gap: 16px;
-   width: 720px;
+   max-width: 720px;
    margin-bottom: 180px;
 }
 
@@ -1047,7 +1051,7 @@ p.lead {
    flex-direction: row;
    justify-content: center;
    align-items: center;
-   padding: 10px 32px 0;
+   padding: 10px 32px 5px;
    width: 500px;
    height: 50px;
    border: 1px solid #fff;
