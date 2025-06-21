@@ -12,10 +12,10 @@
    .covert-header-inner,
    footer .content {
       width: 100% !important;
-      padding: 0 34px !important;
+      padding: 0 24px !important;
    }
    .elementor-widget-wts-modal-popup .eae-popup-link {
-      margin-right: 24px;
+      margin-right: 34px;
    }
 }
 
@@ -170,6 +170,11 @@
    .covert-header-mp {
       padding-right: 30px;
    }
+
+   .elementor-widget-wts-modal-popup .eae-popup-link {
+      margin-right: 34px;
+   }
+
    #hero .text h1 {
       font-size: 60px;
    }
