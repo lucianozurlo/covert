@@ -304,6 +304,10 @@
       margin: 0;
    }
 
+   .elementor-widget-wts-modal-popup .eae-popup-link {
+      display: none !important;
+   }
+
    .pattern {
       background-size: 18% !important;
    }
