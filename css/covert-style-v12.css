@@ -48,6 +48,9 @@ ul.main-menu li.current-menu-parent > a {
    display: flex;
    justify-content: flex-end;
    padding-right: 90px;
+}
+
+#main-covert .covert-header-mp {
    display: none;
 }
 
