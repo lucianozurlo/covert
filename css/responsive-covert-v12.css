@@ -3,13 +3,19 @@
       width: 100% !important;
       padding: 0 24px !important;
    }
+   .elementor-widget-wts-modal-popup .eae-popup-link {
+      margin-right: 34px;
+   }
 }
 
 @media only screen and (max-width: 1461px) {
    .covert-header-inner,
    footer .content {
       width: 100% !important;
-      padding: 0 24px !important;
+      padding: 0 34px !important;
+   }
+   .elementor-widget-wts-modal-popup .eae-popup-link {
+      margin-right: 24px;
    }
 }
 
