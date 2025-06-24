@@ -1335,12 +1335,11 @@
       let swiperPricing;
 
       function initSwiper() {
-         if (window.innerWidth <= 1400) {
+         if (window.innerWidth < 768) {
             if (!swiperPricing) {
                swiperPricing = new Swiper('#pricing-details .swiper-container', {
                   slidesPerView: 4,
                   centeredSlides: true,
-                  spaceBetween: 0,
                   loop: false,
                   initialSlide: 0,
                });
