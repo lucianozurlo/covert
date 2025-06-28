@@ -1851,6 +1851,7 @@ footer .info a img {
    padding: unset;
    font-weight: unset;
    background: unset;
+   letter-spacing: 0 !important;
 }
 
 /* Patterns */
