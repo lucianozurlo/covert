@@ -23,6 +23,11 @@ img {
 }
 
 /* HEADER */
+.wp.header-col2.covert-button.book {
+   transform: translateX(32px);
+   transition: all 0.2s ease-in-out;
+}
+
 ul.main-menu li a {
    font-family: 'Work Sans', sans-serif;
    font-size: 18px;

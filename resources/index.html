@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Covert Revenue</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+         rel="stylesheet"
+      />
+      <link type="text/css" rel="stylesheet" href="../css/config.css" />
+      <link type="text/css" rel="stylesheet" href="../css/libs.css" />
+      <link type="text/css" rel="stylesheet" href="../css/style.css" />
+      <link type="text/css" rel="stylesheet" href="../css/preload.css" />
+      <link type="text/css" rel="stylesheet" href="../css/covert-style-vOK.css" />
+      <link type="text/css" rel="stylesheet" href="../css/responsive.css" />
+      <link type="text/css" rel="stylesheet" href="../css/responsive-covert-vOK.css" />
+      <link rel="icon" type="image/png" href="../img/iso.png" />
+      <meta property="og:title" content="Covert Revenue" />
+      <meta
+         property="og:description"
+         content="More than a HubSpot and Salesforce Agency—we're your embedded RevOps partner."
+      />
+      <meta property="og:image" content="https://covertrevenue.com/img/covertrevenue_logo.jpg" />
+      <meta property="og:url" content="https://covertrevenue.com/" />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Covert Revenue" />
+      <meta
+         name="twitter:description"
+         content="More than a HubSpot and Salesforce Agency—we're your embedded RevOps partner."
+      />
+      <meta name="twitter:image" content="https://covertrevenue.com/img/covertrevenue_logo.jpg" />
+   </head>
+
+   <body id="main-covert">
+      <div id="preloader">
+         <div class="preload-wrapper">
+            <img src="../img/iso-empty.svg" class="empty-image" />
+            <img src="../img/iso.svg" class="fill-image" />
+         </div>
+         <p id="loading-text">
+            Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+         </p>
+      </div>
+
+      <div id="mainContent">
+         <header
+            id="covert-header"
+            class="is-frosted is-sticky"
+            data-appear="fade-down"
+            data-unload="fade-up"
+         >
+            <div class="covert-header-inner">
+               <div class="covert-header-lp">
+                  <a href="#hero" class="covert-logo">
+                     <img src="../img/logo.svg" alt="covert." width="88" height="24" />
+                  </a>
+               </div>
+               <div class="covert-header-mp" style="">
+                  <nav class="covert-nav">
+                     <ul class="main-menu" data-stagger-appear="fade-down" data-stagger-delay="75">
+                        <li>
+                           <a href="#Services">Services</a>
+                        </li>
+                        <li>
+                           <a href="#Solutions">Solutions</a>
+                        </li>
+                        <li>
+                           <a href="#Partnerships">Partnerships</a>
+                        </li>
+                        <li>
+                           <a href="#Resources">Resources</a>
+                        </li>
+                     </ul>
+                  </nav>
+               </div>
+               <div class="covert-header-rp">
+                  <a
+                     href="#"
+                     class="covert-button book"
+                     data-modal-url="https://cal.com/tylermoll/15min"
+                  >
+                     <img src="../img/call-calling.svg" />Book a strategy call
+                  </a>
+               </div>
+            </div>
+            <div class="covert-mobile-header-inner">
+               <a href="./" class="covert-logo">
+                  <img src="../img/logo.svg" alt="covert." width="88" height="24" />
+               </a>
+               <div class="right-menu">
+                  <a
+                     href="#"
+                     class="covert-button book"
+                     data-modal-url="https://cal.com/tylermoll/15min"
+                  >
+                     <img src="../img/call-calling.svg" />Book a strategy call
+                  </a>
+                  <a href="#" class="covert-mobile-menu-toggler" style="">
+                     <i class="covert-menu-toggler-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                     </i>
+                  </a>
+               </div>
+            </div>
+         </header>
+
+         <main id="covert-main">
+            <iframe
+               id="wp-iframe"
+               src="https://covertrevenue.com/blog/"
+               title="WordPress content"
+               scrolling="no"
+               frameborder="0"
+               style="width: 100%; display: block"
+            ></iframe>
+         </main>
+
+         <!-- Modal -->
+         <div id="modal">
+            <div id="modal-wrapper">
+               <div id="modal-content">
+                  <iframe id="modal-iframe" src=""></iframe>
+               </div>
+               <span id="modal-close">&times;</span>
+            </div>
+         </div>
+      </div>
+
+      <!-- Scripts -->
+      <script src="../js/lib/jquery.min.js"></script>
+      <script src="../js/lib/libs.js"></script>
+      <script src="../js/contact_form.js"></script>
+      <script src="../js/st-core.js"></script>
+      <script src="../js/classes.js"></script>
+      <script src="../js/main.js"></script>
+
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+            const fillImage = document.querySelector('.fill-image');
+            const preloader = document.getElementById('preloader');
+            const mainContent = document.getElementById('mainContent');
+            const loadingText = document.getElementById('loading-text');
+
+            setTimeout(() => {
+               fillImage.style.clipPath = 'inset(0 0 0 0)';
+            }, 100);
+
+            fillImage.addEventListener('transitionend', (e) => {
+               if (e.propertyName === 'clip-path') {
+                  loadingText.style.transition = 'transform 1s ease-out, opacity .3s ease-out';
+                  loadingText.style.transform = 'translateY(60%)';
+                  loadingText.style.opacity = '0';
+
+                  preloader.style.transition = 'opacity 1s ease-out';
+                  preloader.style.opacity = '0';
+               }
+            });
+
+            preloader.addEventListener('transitionend', (e) => {
+               if (e.propertyName === 'opacity' && e.target === preloader) {
+                  preloader.style.display = 'none';
+                  mainContent.style.transition = 'opacity 1s ease-out';
+                  mainContent.style.opacity = '1';
+               }
+            });
+         });
+      </script>
+
+      <script src="https://unpkg.com/iframe-resizer/js/iframeResizer.min.js"></script>
+      <script>
+         iFrameResize(
+            {
+               log: false, // pon true si querés debugear
+               checkOrigin: false, // si tu WP está en otro dominio
+               heightCalculationMethod: 'max',
+            },
+            '#wp-iframe'
+         );
+      </script>
+   </body>
+</html>
