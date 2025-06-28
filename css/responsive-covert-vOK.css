@@ -423,11 +423,11 @@
       /* display: none; */
    }
    .covert-mobile-header-inner {
-      height: 80px;
+      height: 78px;
    }
 
    #hero {
-      top: 80px;
+      top: 78px;
       padding-top: 0;
    }
 
@@ -465,7 +465,7 @@
    #hero img.main {
       width: 228px;
       height: auto;
-      margin: 80px auto 130px;
+      margin: 78px auto 130px;
    }
    p.lead {
       font-size: 18px;
