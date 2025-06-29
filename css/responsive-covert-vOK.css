@@ -121,8 +121,13 @@
       gap: 30px !important;
    }
    .covert-header-mp {
-      padding-right: 264px !important;
+      padding-right: 50px;
    }
+
+   .wp.header .covert-header-mp {
+      padding-right: 264px;
+   }
+
    #problem .content {
       gap: 22px;
    }
