@@ -271,6 +271,11 @@
       background: linear-gradient(to top, transparent, var(--covert-s-border));
    }
 
+   .covert-mobile-menu a {
+      font-size: 30px !important;
+      font-weight: 300 !important;
+   }
+
    nav.covert-nav ul.main-menu {
       gap: 20px;
    }
