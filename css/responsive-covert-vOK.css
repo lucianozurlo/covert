@@ -184,6 +184,12 @@
    .e-con > .e-con-inner {
       gap: 40px;
    }
+
+   .header-col2 .eae-popup-link,
+   .wp.header-col2.covert-button.book {
+      transform: translateX(72px) !important;
+   }
+
    .blog-col-1 {
       /* width: 260px;
       max-width: 260px; */
