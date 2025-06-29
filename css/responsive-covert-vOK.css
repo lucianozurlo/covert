@@ -274,8 +274,12 @@
    .covert-mobile-menu a {
       font-size: 30px !important;
       font-weight: 300 !important;
+      transition: all 0.2s ease-in-out;
    }
 
+   .covert-mobile-menu a:hover {
+      color: #007aff;
+   }
    nav.covert-nav ul.main-menu {
       gap: 20px;
    }
