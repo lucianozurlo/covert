@@ -274,6 +274,8 @@
    .covert-mobile-menu a {
       font-size: 30px !important;
       font-weight: 300 !important;
+      font-family: 'Inter';
+      letter-spacing: 0;
       transition: all 0.2s ease-in-out;
    }
 
