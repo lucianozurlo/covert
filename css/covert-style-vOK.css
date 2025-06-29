@@ -25,7 +25,7 @@ img {
 /* HEADER */
 .header-col2 .eae-popup-link,
 .wp.header-col2.covert-button.book {
-   transform: translateX(32px);
+   transform: translateX(32px) !important;
    transition: all 0.2s ease-in-out;
 }
 
