@@ -451,6 +451,12 @@
       margin: 0;
    }
 
+   .wp.header-col2.covert-button.book {
+      transform: translateY(-20px) !important;
+      right: 128px;
+      position: absolute;
+   }
+
    /* .elementor-widget-wts-modal-popup .eae-popup-link {
       display: none !important;
    } */
