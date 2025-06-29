@@ -180,12 +180,12 @@
       gap: 40px;
    }
    .blog-col-1 {
-      width: 260px;
-      max-width: 260px;
+      /* width: 260px;
+      max-width: 260px; */
    }
    .blog-col-2 {
-      width: unset;
-      max-width: unset;
+      /* width: unset;
+      max-width: unset; */
    }
 }
 
