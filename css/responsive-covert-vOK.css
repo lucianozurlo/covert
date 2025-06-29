@@ -14,9 +14,9 @@
       width: 100% !important;
       padding: 0 24px !important;
    }
-   .elementor-widget-wts-modal-popup .eae-popup-link {
+   /* .elementor-widget-wts-modal-popup .eae-popup-link {
       margin-right: 34px;
-   }
+   } */
 }
 
 @media only screen and (max-width: 1432px) {
@@ -304,9 +304,9 @@
       padding-right: 30px;
    }
 
-   .elementor-widget-wts-modal-popup .eae-popup-link {
+   /* .elementor-widget-wts-modal-popup .eae-popup-link {
       margin-right: 0;
-   }
+   } */
 
    #hero .text h1 {
       font-size: 60px;
