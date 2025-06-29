@@ -1158,3 +1158,10 @@
       right: 20px;
    }
 }
+
+@media only screen and (max-width: 499px) {
+   .header-col2 .eae-popup-link,
+   .wp.header-col2.covert-button.book {
+      display: none;
+   }
+}
