@@ -454,7 +454,7 @@
 
    .blog-col-1,
    .blog-col-2 {
-      padding: 0 32px;
+      padding: 0 32px !important;
    }
    .pattern {
       background-size: 18% !important;
