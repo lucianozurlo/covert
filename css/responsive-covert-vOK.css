@@ -451,9 +451,13 @@
       margin: 0;
    }
 
+   .header-col2 .eae-popup-link {
+      transform: translateX(0) !important;
+   }
+
    .wp.header-col2.covert-button.book {
       transform: translateY(-20px) !important;
-      right: 128px;
+      right: 88px;
       position: absolute;
    }
 
@@ -478,11 +482,6 @@
    .e-con.e-flex {
       width: 100%;
       padding: 0;
-   }
-
-   .wp.header-col2.covert-button.book {
-      transform: translateY(-59px);
-      right: 84px;
    }
 
    #hero {
