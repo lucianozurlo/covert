@@ -118,10 +118,10 @@
 
 @media only screen and (max-width: 1090px) {
    nav.covert-nav ul.main-menu {
-      gap: 30px;
+      gap: 30px !important;
    }
    .covert-header-mp {
-      padding-right: 50px;
+      padding-right: 264px !important;
    }
    #problem .content {
       gap: 22px;
