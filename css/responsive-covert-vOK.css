@@ -175,6 +175,20 @@
    }
 }
 
+@media only screen and (max-width: 1030px) {
+   .e-con > .e-con-inner {
+      gap: 40px;
+   }
+   .blog-col-1 {
+      width: 260px;
+      max-width: 260px;
+   }
+   .blog-col-2 {
+      width: unset;
+      max-width: unset;
+   }
+}
+
 @media only screen and (max-width: 960px) {
    .wp.header-col2.covert-button.book {
       transform: translateX(0);
