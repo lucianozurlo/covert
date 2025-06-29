@@ -204,6 +204,12 @@
    .wp.header-col2.covert-button.book {
       transform: translateX(0);
    }
+
+   .header-col2 .eae-popup-link,
+   .wp.header-col2.covert-button.book {
+      transform: translateX(40px) !important;
+   }
+
    .covert-active-menu-ind,
    .covert-header-inner {
       display: none;
