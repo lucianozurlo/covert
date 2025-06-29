@@ -279,7 +279,7 @@
    }
 
    .elementor-widget-wts-modal-popup .eae-popup-link {
-      margin-right: 34px;
+      margin-right: 0;
    }
 
    #hero .text h1 {
@@ -408,9 +408,9 @@
       margin: 0;
    }
 
-   .elementor-widget-wts-modal-popup .eae-popup-link {
+   /* .elementor-widget-wts-modal-popup .eae-popup-link {
       display: none !important;
-   }
+   } */
 
    .pattern {
       background-size: 18% !important;
@@ -430,6 +430,12 @@
       width: 100%;
       padding: 0;
    }
+
+   .wp.header-col2.covert-button.book {
+      transform: translateY(-59px);
+      right: 84px;
+   }
+
    #hero {
       top: 78px;
       padding-top: 0;
