@@ -426,6 +426,10 @@
       height: 78px;
    }
 
+   .e-con.e-flex {
+      width: 100%;
+      padding: 0;
+   }
    #hero {
       top: 78px;
       padding-top: 0;
