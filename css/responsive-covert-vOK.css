@@ -456,6 +456,16 @@
    .blog-col-2 {
       padding: 0 32px !important;
    }
+
+   .blog-col-2 {
+      margin-top: 20px;
+      gap: 0 !important;
+   }
+
+   .blog-col-2 h3.wpr-archive-title {
+      padding-bottom: 10px;
+   }
+
    .pattern {
       background-size: 18% !important;
    }
