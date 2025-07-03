@@ -21,14 +21,6 @@
 
    <body>
       <style>
-         .eae-popup.mfp-auto-cursor .mfp-content {
-            overflow: auto !important;
-         }
-
-         .modal-scroll {
-            padding: 50px;
-         }
-
          h4 {
             font-family: 'Inter', sans-serif;
             font-weight: 700;
@@ -102,6 +94,28 @@
 
          ul li:last-child {
             padding-bottom: 10px;
+         }
+         .eae-popup.mfp-wrap {
+            max-height: 100%;
+            max-width: 100%;
+         }
+         .eae-popup .mfp-container {
+            max-height: 100%;
+            max-width: 100%;
+            padding: 0 !important;
+         }
+         .eae-popup.mfp-auto-cursor .mfp-content {
+            max-height: 100%;
+            max-width: 90%;
+            border-radius: 14px;
+         }
+         .eae-popup.mfp-auto-cursor .mfp-content .eae-popup-content {
+            height: 100%;
+            max-width: 100%;
+         }
+         .modal-scroll {
+            padding: 36px;
+            max-width: 100%;
          }
       </style>
 
